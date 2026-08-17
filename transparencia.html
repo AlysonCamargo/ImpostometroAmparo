@@ -3,134 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legislação e LAI — Impostômetro de Amparo</title>
-    <meta name="description" content="Leis orçamentárias de Amparo, Lei de Acesso à Informação e como pedir dados públicos pelo e-SIC.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Transparência - Impostômetro de Amparo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <div class="notice-bar">Projeto independente de um morador de Amparo — não é site oficial da Prefeitura.</div>
+    <div class="faixa-aviso">
+        👋 Olá! Site mantido por um morador de Amparo para entendermos as contas da cidade. Não é da Prefeitura.
+    </div>
 
-    <header class="site-header">
-        <div class="container header-row">
-            <a href="index.html" class="brand">
-                <div class="brand-name">Impostômetro de Amparo</div>
-                <div class="brand-sub">Amparo · Estância Hidromineral · SP</div>
+    <header class="topo-site">
+        <div class="conteiner topo-flex">
+            <a href="index.html" class="logo-link">
+                <div class="logo-titulo">Impostômetro de Amparo</div>
+                <div class="logo-sub">Entendendo as contas do nosso município</div>
             </a>
-            <div class="header-date"><span class="js-data-hoje">--/--/----</span></div>
         </div>
     </header>
 
-    <nav class="site-nav">
-        <div class="container">
-            <ul class="nav-list">
-                <li><a href="index.html">Impostômetro</a></li>
-                <li><a href="tributos.html">De onde vem?</a></li>
-                <li><a href="retorno.html">Para onde vai?</a></li>
-                <li><a href="calculadora.html">Quanto eu pago?</a></li>
+    <nav class="barra-menu">
+        <div class="conteiner">
+            <button id="btn-menu" class="menu-toggle">Menu ☰</button>
+            <ul id="menu-principal" class="lista-menu">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="tributos.html">O que a gente paga</a></li>
+                <li><a href="retorno.html">No que é gasto</a></li>
+                <li><a href="calculadora.html">Simule o seu</a></li>
                 <li><a href="circuito.html">Região</a></li>
-                <li><a href="transparencia.html" class="active">Legislação</a></li>
+                <li><a href="transparencia.html" class="ativo">Transparência</a></li>
             </ul>
         </div>
     </nav>
 
-    <div class="container pb">
-        <div class="page-head">
-            <div class="crumb"><a href="index.html">Início</a> › Legislação e LAI</div>
-            <h2>Legislação orçamentária e seus direitos</h2>
-            <p>Leis de Amparo e como exercer o direito de acesso à informação pública.</p>
+    <main class="conteiner">
+        <div class="cabecalho-pagina">
+            <h1 class="titulo-pagina">Os dados, a lei e sua voz!</h1>
+            <p class="subtitulo-pagina">Quer botar banca? Saiba seus direitos.</p>
         </div>
 
-        <div class="layout">
-            <div>
-                <div class="section">
-                    <div class="section-title">Leis orçamentárias do Município de Amparo</div>
-                    <table class="tbl">
-                        <thead>
-                            <tr>
-                                <th>Instrumento</th>
-                                <th>Lei</th>
-                                <th>Objeto</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>LOA 2026</strong></td>
-                                <td>nº 4.321/2025</td>
-                                <td>Estima a receita e fixa a despesa para 2026.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>LDO 2026</strong></td>
-                                <td>nº 4.298/2025</td>
-                                <td>Metas e prioridades orçamentárias do exercício.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>PPA 2026–2029</strong></td>
-                                <td>nº 4.150/2025</td>
-                                <td>Plano plurianual de ação governamental (4 anos).</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Código Tributário</strong></td>
-                                <td>nº 1.890 e alterações</td>
-                                <td>Regras de arrecadação dos tributos municipais.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+        <div class="conteudo-texto">
+            <p>Este site é um resumão de várias leis. As contas da cidade não rodam no escuro; de tanto em tanto a Câmara tem que votar as regrinhas. Tem um "PPA" a cada 4 anos pra traçar o prumo de longo prazo, de todo final de ano a LOA, e é nela que você vai ver no miúdo quanto eles esperam e onde vão botar.</p>
 
-                <div class="section">
-                    <div class="section-title">Lei de Acesso à Informação (e-SIC)</div>
-                    <div class="section-body">
-                        <p style="font-size: 14px; line-height: 1.7; color: var(--ink-2);">
-                            A <strong>Lei Federal nº 12.527/2011</strong> garante que qualquer pessoa pode pedir informações, documentos e relatórios à Prefeitura — sem precisar justificar. O prazo de resposta é de até <strong>20 dias corridos</strong>.
-                        </p>
-                        <div class="note" style="margin-top: 14px;">
-                            <strong>Como pedir:</strong> Protocolo Geral da Prefeitura de Amparo — Av. Bernardino de Campos, 705, Centro. Segunda a sexta, das 8h às 17h.
-                        </div>
-                    </div>
-                </div>
+            <h3>O pulo do gato: A Lei de Acesso à Informação (LAI)</h3>
+            <p>Seja você cobrador de impostos ou estudante, saiba as mágicas da Lei Federal 12.527/2011. Essa lei diz o seguinte: <strong>a prefeitura trabalha pra nós</strong>. Portanto, não é "favorzinho" abrir a gaveta dos números.</p>
+            <p>Qualquer cidadão de Amparo pode chegar lá (ou de preferência no e-SIC, pra fazer online na comodidade) e abrir protocolo metendo algo na linha de: <em>"Gostaria da planilha de compras na escola Y do mês tal."</em> E pronto. Ninguém deve cara feia.</p>
+
+            <ul>
+                <li><strong>Prazo:</strong> A Prefeitura tem maravilhosos <strong>20 dias corridos</strong> pra dar satisfação, tá legal? Se chorar, ganham prazo de +10, mas em regra é isso aí.</li>
+                <li><strong>Mas onde eu chego?</strong> Pessoalmente, no Paço, no Protocolo Geral — Av. Bernardino de Campos, 705.</li>
+            </ul>
+
+            <div class="caixa-dica">
+                <p>Tem muita, muita coisa que já tá mastigada na net antes da gente precisar encher eles de burocracia. O <a href="http://www.amparo.sp.gov.br/" target="_blank">Portal da Prefeitura de Amparo</a> não é Netflix, mas é bom dar aquela mexida no menu "Portal da Transparência".</p>
+                <p>E a <a href="http://www.camaramparo.sp.gov.br/" target="_blank">Câmara de Amparo</a> também tem balanço da própria grana toda hora.</p>
             </div>
-
-            <aside>
-                <div class="aside-section">
-                    <div class="aside-title">Portais úteis</div>
-                    <div class="aside-body">
-                        <ul class="kv-list">
-                            <li class="kv"><span class="kv-key">Prefeitura</span><span class="kv-value">amparo.sp.gov.br</span></li>
-                            <li class="kv"><span class="kv-key">Câmara</span><span class="kv-value">camaramparo.sp.gov.br</span></li>
-                            <li class="kv"><span class="kv-key">TCESP</span><span class="kv-value">tce.sp.gov.br</span></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="aside-section">
-                    <div class="aside-title">Controle externo</div>
-                    <div class="aside-body">
-                        <p style="font-size: 12px; line-height: 1.55; color: var(--ink-2);">Contas fiscalizadas pelo TCESP e pela Câmara Municipal de Amparo.</p>
-                    </div>
-                </div>
-            </aside>
+            
+            <p>Bora não dormir no ponto, se a verba não aparecer, só assim arrumamos a casa!</p>
         </div>
-    </div>
+    </main>
 
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-row">
-                <div>
-                    <div class="footer-name">Impostômetro de Amparo</div>
-                    <div class="footer-note">Projeto de um morador. Não é site oficial da Prefeitura.</div>
-                </div>
-                <ul class="f-nav">
-                    <li><a href="index.html">Início</a></li>
-                    <li><a href="tributos.html">Receitas</a></li>
-                    <li><a href="retorno.html">Despesas</a></li>
-                    <li><a href="calculadora.html">Calculadora</a></li>
-                    <li><a href="transparencia.html">Legislação</a></li>
-                </ul>
+    <footer class="rodape-site">
+        <div class="conteiner">
+            <div class="rodape-creditos">
+                Desenvolvido com ☕ em Amparo &nbsp;|&nbsp; Transparência salva!
             </div>
-            <div class="footer-copy">Dados: LOA 2026, TCESP, IBGE · Amparo, SP</div>
         </div>
     </footer>
 

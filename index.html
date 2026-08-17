@@ -3,122 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Impostômetro de Amparo — Quanto o município já arrecadou?</title>
-    <meta name="description" content="Acompanhe em tempo real quanto o Município de Amparo arrecadou neste exercício. Projeto independente de um morador.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Impostômetro de Amparo - Para onde vai nosso dinheiro?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <!-- Removido tudo que cheirava a SEO automático padrão -->
 </head>
 <body>
 
-    <div class="notice-bar">
-        Projeto independente de um morador de Amparo — não é site oficial da Prefeitura. Dados baseados na LOA aprovada pela Câmara Municipal.
+    <div class="faixa-aviso">
+        👋 Olá! Site mantido por um morador de Amparo para entendermos as contas da cidade. Não é da Prefeitura.
     </div>
 
-    <header class="site-header">
-        <div class="container header-row">
-            <a href="index.html" class="brand">
-                <div class="brand-name">Impostômetro de Amparo</div>
-                <div class="brand-sub">Amparo · Estância Hidromineral · SP</div>
+    <header class="topo-site">
+        <div class="conteiner topo-flex">
+            <a href="index.html" class="logo-link">
+                <div class="logo-titulo">Impostômetro de Amparo</div>
+                <div class="logo-sub">Entendendo as contas do nosso município</div>
             </a>
-            <div class="header-date">
-                <span class="js-data-hoje">--/--/----</span>
-            </div>
         </div>
     </header>
 
-    <nav class="site-nav">
-        <div class="container">
-            <ul class="nav-list">
-                <li><a href="index.html" class="active">Impostômetro</a></li>
-                <li><a href="tributos.html">De onde vem?</a></li>
-                <li><a href="retorno.html">Para onde vai?</a></li>
-                <li><a href="calculadora.html">Quanto eu pago?</a></li>
+    <nav class="barra-menu">
+        <div class="conteiner">
+            <button id="btn-menu" class="menu-toggle">Menu ☰</button>
+            <ul id="menu-principal" class="lista-menu">
+                <li><a href="index.html" class="ativo">Início</a></li>
+                <li><a href="tributos.html">O que a gente paga</a></li>
+                <li><a href="retorno.html">No que é gasto</a></li>
+                <li><a href="calculadora.html">Simule o seu</a></li>
                 <li><a href="circuito.html">Região</a></li>
-                <li><a href="transparencia.html">Legislação</a></li>
+                <li><a href="transparencia.html">Transparência</a></li>
             </ul>
         </div>
     </nav>
 
-    <div class="pb">
-        <div class="container">
-
-            <!-- Impostômetro -->
-            <div class="meter-wrap" style="margin-top: 20px;">
-                <div class="meter-eyebrow">Amparo arrecadou em 2026 (desde 01/jan)</div>
-                <div id="impostometro-value" class="meter-number">R$ 0,00</div>
-                <div class="meter-sub">
-                    Ritmo projetado: <strong id="impostometro-rate-value">—</strong> &middot; Base: LOA 2026, R$ 295 mi/ano
-                </div>
-                <div class="meter-note">
-                    O valor sobe porque o município arrecada tributos o tempo todo — repasses do Estado (ICMS, IPVA), da União (FPM, FUNDEB) e impostos próprios (IPTU, ISS). O ritmo é a média linear da previsão orçamentária.
-                </div>
-            </div>
-
-            <!-- Dados rápidos -->
-            <div class="stats-row">
-                <div class="stat">
-                    <div class="stat-val" id="js-total-loa">—</div>
-                    <div class="stat-label">Orçamento prévisor 2026</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-val" id="js-per-capita">—</div>
-                    <div class="stat-label">Receita por habitante / ano</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-val">R$ 9,35</div>
-                    <div class="stat-label">Arrecadação estimada por segundo</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-val">28%</div>
-                    <div class="stat-label">Aplicado em saúde (mínimo constitucional: 15%)</div>
-                </div>
-            </div>
-
-            <!-- Links de seções -->
-            <div class="section-links">
-                <a href="tributos.html" class="sec-link">
-                    <div class="sec-link-title">De onde vem o dinheiro?</div>
-                    <div class="sec-link-desc">ICMS, FPM, IPTU, ISS — o que forma a receita do município.</div>
-                </a>
-                <a href="retorno.html" class="sec-link">
-                    <div class="sec-link-title">Para onde vai?</div>
-                    <div class="sec-link-desc">Saúde, Educação, Obras — como o orçamento é dividido.</div>
-                </a>
-                <a href="calculadora.html" class="sec-link">
-                    <div class="sec-link-title">Quanto você paga?</div>
-                    <div class="sec-link-desc">Estime sua contribuição tributária anual nas três esferas.</div>
-                </a>
-                <a href="circuito.html" class="sec-link">
-                    <div class="sec-link-title">Amparo vs. região</div>
-                    <div class="sec-link-desc">Compare o orçamento com outras cidades do Circuito das Águas.</div>
-                </a>
-            </div>
-
-            <div class="alert">
-                Os dados desta página são baseados na LOA 2026 (Lei nº 4.321/2025). Para dados atualizados da execução mensal, consulte o Portal da Transparência da Prefeitura de Amparo.
-            </div>
-
+    <main class="conteiner">
+        <div class="apresentacao">
+            <p><strong>Você já parou para pensar quanto a cidade de Amparo arrecada por dia?</strong></p>
+            <p>Juntando o IPTU das casas, o ISS das empresas, e o ICMS que o estado devolve pra gente... o cofre não para. Olhe só a estimativa em tempo real para este ano:</p>
         </div>
-    </div>
 
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-row">
-                <div>
-                    <div class="footer-name">Impostômetro de Amparo</div>
-                    <div class="footer-note">Projeto de um morador. Não é site oficial da Prefeitura.</div>
-                </div>
-                <ul class="f-nav">
-                    <li><a href="index.html">Início</a></li>
-                    <li><a href="tributos.html">Receitas</a></li>
-                    <li><a href="retorno.html">Despesas</a></li>
-                    <li><a href="calculadora.html">Calculadora</a></li>
-                    <li><a href="transparencia.html">Legislação</a></li>
-                </ul>
+        <section class="caixa-contador">
+            <div class="contador-label">Arrecadação Municipal Estimada em 2026 (Desde 1º de Janeiro)</div>
+            <div id="impostometro-valor" class="contador-valor">carregando...</div>
+            <div class="contador-detalhe">
+                A estimativa é de que a cidade arrecade em torno de <span class="destaque-amarelo">R$ 9,35 a cada segundo</span>.<br>
+                Isso nos leva ao orçamento aprovado para o ano que é de <strong>R$ 295 milhões</strong>.
             </div>
-            <div class="footer-copy">Dados: LOA 2026, TCESP, IBGE · Amparo, SP</div>
+        </section>
+
+        <section style="margin-bottom: 50px;">
+            <h3>O que você quer explorar agora?</h3>
+            <div class="grade-atalhos">
+                <a href="tributos.html" class="cartao-atalho">
+                    <h3>De onde sai tudo isso? 👀</h3>
+                    <p>Entenda quanto vem do IPTU, quanto vem do IPVA dos nossos carros e os repasses do governo de SP.</p>
+                </a>
+                
+                <a href="retorno.html" class="cartao-atalho">
+                    <h3>Para onde esse dinheiro vai? 🏥</h3>
+                    <p>Saúde, educação, asfalto... veja as fatias do bolo do orçamento aprovado pela Câmara neste ano.</p>
+                </a>
+                
+                <a href="calculadora.html" class="cartao-atalho">
+                    <h3>Quanto tá saindo do meu bolso? 💸</h3>
+                    <p>Fiz uma calculadora pra você ver quanto imposto você paga no supermercado e no fim do mês.</p>
+                </a>
+            </div>
+            
+            <div class="caixa-dica">
+                <strong>De onde eu tirei esses números?</strong>
+                Eu não inventei. Tudo isso é baseado na Lei Orçamentária Anual (LOA) que os vereadores votam, no número de habitantes do IBGE e nos dados oficiais que a prefeitura manda pro Tribunal de Contas de São Paulo.
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape-site">
+        <div class="conteiner">
+            <div class="rodape-conteudo">
+                <div class="rodape-sobre">
+                    <h4>Impostômetro de Amparo</h4>
+                    <p>Feito por um morador inquieto tentando deixar o "titiques" das contas públicas mais fácil de entender pra todo mundo. Sem vínculos partidários.</p>
+                </div>
+                <div>
+                    <h4 style="color: white; margin-bottom: 15px;">Links Rápidos</h4>
+                    <ul class="rodape-links">
+                        <li><a href="tributos.html">Receitas (Arrecadação)</a></li>
+                        <li><a href="retorno.html">Despesas (Gastos)</a></li>
+                        <li><a href="calculadora.html">Seus Impostos</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="rodape-creditos">
+                Desenvolvido com ☕ em Amparo &nbsp;|&nbsp; Dados de Domínio Público
+            </div>
         </div>
     </footer>
 

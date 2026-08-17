@@ -3,160 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para onde vai o dinheiro? — Impostômetro de Amparo</title>
-    <meta name="description" content="Como o orçamento de Amparo é dividido por função de governo — Saúde, Educação, Obras e mais.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>No que o dinheiro é gasto? - Impostômetro de Amparo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <div class="notice-bar">Projeto independente de um morador de Amparo — não é site oficial da Prefeitura.</div>
+    <div class="faixa-aviso">
+        👋 Olá! Site mantido por um morador de Amparo para entendermos as contas da cidade. Não é da Prefeitura.
+    </div>
 
-    <header class="site-header">
-        <div class="container header-row">
-            <a href="index.html" class="brand">
-                <div class="brand-name">Impostômetro de Amparo</div>
-                <div class="brand-sub">Amparo · Estância Hidromineral · SP</div>
+    <header class="topo-site">
+        <div class="conteiner topo-flex">
+            <a href="index.html" class="logo-link">
+                <div class="logo-titulo">Impostômetro de Amparo</div>
+                <div class="logo-sub">Entendendo as contas do nosso município</div>
             </a>
-            <div class="header-date">
-                <select id="select-exercicio" class="exer-select">
-                    <option value="2026" selected>2026 (LOA)</option>
-                    <option value="2025">2025</option>
-                    <option value="2024">2024</option>
-                </select>
-            </div>
         </div>
     </header>
 
-    <nav class="site-nav">
-        <div class="container">
-            <ul class="nav-list">
-                <li><a href="index.html">Impostômetro</a></li>
-                <li><a href="tributos.html">De onde vem?</a></li>
-                <li><a href="retorno.html" class="active">Para onde vai?</a></li>
-                <li><a href="calculadora.html">Quanto eu pago?</a></li>
+    <nav class="barra-menu">
+        <div class="conteiner">
+            <button id="btn-menu" class="menu-toggle">Menu ☰</button>
+            <ul id="menu-principal" class="lista-menu">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="tributos.html">O que a gente paga</a></li>
+                <li><a href="retorno.html" class="ativo">No que é gasto</a></li>
+                <li><a href="calculadora.html">Simule o seu</a></li>
                 <li><a href="circuito.html">Região</a></li>
-                <li><a href="transparencia.html">Legislação</a></li>
+                <li><a href="transparencia.html">Transparência</a></li>
             </ul>
         </div>
     </nav>
 
-    <div class="container pb">
-        <div class="page-head">
-            <div class="crumb"><a href="index.html">Início</a> › Para onde vai?</div>
-            <h2>Para onde vai o dinheiro de Amparo?</h2>
-            <p>A despesa é dividida por função de governo segundo a classificação da Secretaria do Tesouro Nacional.</p>
+    <main class="conteiner">
+        <div class="cabecalho-pagina">
+            <h1 class="titulo-pagina">Para onde vai o dinheiro, afinal?</h1>
+            <p class="subtitulo-pagina">A divisão do bolo que a Câmara vota todo ano.</p>
         </div>
 
-        <div class="layout">
-            <div>
-                <div class="section">
-                    <div class="section-title">Despesa por função — exercício <span class="js-exercicio">2026</span></div>
-                    <table class="tbl">
-                        <thead>
-                            <tr>
-                                <th>Cód.</th>
-                                <th>Função</th>
-                                <th class="num">%</th>
-                                <th class="num">Dotação prevista</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>10</td>
-                                <td><strong>Saúde</strong> — UBS, Pronto-Atendimento, Santa Casa</td>
-                                <td class="num">28,0%</td>
-                                <td class="num" id="tbl-saude">—</td>
-                            </tr>
-                            <tr>
-                                <td>12</td>
-                                <td><strong>Educação</strong> — Ensino fundamental e infantil</td>
-                                <td class="num">25,8%</td>
-                                <td class="num" id="tbl-educacao">—</td>
-                            </tr>
-                            <tr>
-                                <td>15</td>
-                                <td><strong>Urbanismo</strong> — Pavimentação, iluminação pública</td>
-                                <td class="num">17,6%</td>
-                                <td class="num" id="tbl-urbanismo">—</td>
-                            </tr>
-                            <tr>
-                                <td>04</td>
-                                <td><strong>Administração Geral</strong></td>
-                                <td class="num">9,0%</td>
-                                <td class="num" id="tbl-admin">—</td>
-                            </tr>
-                            <tr>
-                                <td>08</td>
-                                <td><strong>Assistência Social</strong> — CRAS, CREAS</td>
-                                <td class="num">6,0%</td>
-                                <td class="num" id="tbl-social">—</td>
-                            </tr>
-                            <tr>
-                                <td>06</td>
-                                <td><strong>Segurança e Defesa Civil</strong></td>
-                                <td class="num">4,0%</td>
-                                <td class="num" id="tbl-seguranca">—</td>
-                            </tr>
-                            <tr>
-                                <td>99</td>
-                                <td><strong>Demais funções</strong></td>
-                                <td class="num">9,6%</td>
-                                <td class="num" id="tbl-outras">—</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+        <div class="conteudo-texto">
+            <p>Uma coisa legal de saber é que a Prefeitura não pode simplesmente acordar de manhã e decidir construir uma ponte com o dinheiro dos impostos do nada. Existe toda uma divisão de grana (classificação por pasta) amarrada pela Constituição e pelas leis municipais.</p>
 
-                <div class="note">
-                    A Constituição exige mínimo de 15% em Saúde e 25% em Educação. Nos últimos exercícios, Amparo cumpriu ambos os limites com folga.
-                </div>
+            <p>Se tem uma coisa que puxa dinheiro é <strong>Saúde</strong> e <strong>Educação</strong>. Por lei federal, a prefeitura tem que gastar no mínimo 15% em saúde e 25% na educação. Amparo não só bate como costuma aplicar um pouquinho mais.</p>
+            
+            <h3>A divisão estimada para o ano</h3>
+            <p>Fiz essa tabela mastigando a "Dotação Fixada" da Lei Orçamentária Anual. Isso significa "como eles planejam gastar os 295 milhões este ano":</p>
+
+            <table class="tabela-dados">
+                <thead>
+                    <tr>
+                        <th>Setor (Função)</th>
+                        <th class="col-numero">Gasto Planejado (R$)</th>
+                        <th class="col-numero">Fatia (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Saúde</strong> (Postinhos, Santa Casa, SUS)</td>
+                        <td class="col-numero" id="tbl-saude">carregando...</td>
+                        <td class="col-numero">28,0%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Educação</strong> (Creches, Escolas Básicas, Merenda)</td>
+                        <td class="col-numero" id="tbl-educacao">carregando...</td>
+                        <td class="col-numero">25,8%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Urbanismo</strong> (Asfalto, Iluminação, Praças)</td>
+                        <td class="col-numero" id="tbl-urbanismo">carregando...</td>
+                        <td class="col-numero">17,6%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Administração</strong> (RH da prefeitura, sistemas, licitações)</td>
+                        <td class="col-numero" id="tbl-admin">carregando...</td>
+                        <td class="col-numero">9,0%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Assistência Social</strong> (CRAS, CREAS)</td>
+                        <td class="col-numero" id="tbl-social">carregando...</td>
+                        <td class="col-numero">6,0%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Segurança</strong> (Guarda Municipal, Trânsito)</td>
+                        <td class="col-numero" id="tbl-seguranca">carregando...</td>
+                        <td class="col-numero">4,0%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Esportes, Cultura, Câmara, Reserva...</strong></td>
+                        <td class="col-numero" id="tbl-outras">carregando...</td>
+                        <td class="col-numero">9,6%</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="caixa-dica">
+                <strong>Só um lembrete:</strong> Orçamento é <em>planejamento</em>. É tipo você prometer no ano novo que vai economizar. No fim do ano a situação real ("o balanço") sempre oscila uns quebrados a mais ou a menos. Mas ali você sabe onde está o foco.
             </div>
-
-            <aside>
-                <div class="aside-section">
-                    <div class="aside-title">Limites constitucionais</div>
-                    <div class="aside-body">
-                        <ul class="kv-list">
-                            <li class="kv">
-                                <span class="kv-key">Saúde (mín. 15%)</span>
-                                <span class="kv-value ok">28% ✓</span>
-                            </li>
-                            <li class="kv">
-                                <span class="kv-key">Educação (mín. 25%)</span>
-                                <span class="kv-value ok">25,8% ✓</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="aside-section">
-                    <div class="aside-title">Classificação</div>
-                    <div class="aside-body">
-                        <p style="font-size: 12px; line-height: 1.55; color: var(--ink-2);">Códigos conforme Portaria SOF nº 42/1999 da Secretaria do Tesouro Nacional.</p>
-                    </div>
-                </div>
-            </aside>
         </div>
-    </div>
+    </main>
 
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-row">
-                <div>
-                    <div class="footer-name">Impostômetro de Amparo</div>
-                    <div class="footer-note">Projeto de um morador. Não é site oficial da Prefeitura.</div>
+    <footer class="rodape-site">
+        <div class="conteiner">
+            <div class="rodape-conteudo">
+                <div class="rodape-sobre">
+                    <h4>Impostômetro de Amparo</h4>
+                    <p>Site independente. Ajude a fiscalizar nossa cidade entrando no Portal da Transparência da Prefeitura!</p>
                 </div>
-                <ul class="f-nav">
-                    <li><a href="index.html">Início</a></li>
-                    <li><a href="tributos.html">Receitas</a></li>
-                    <li><a href="retorno.html">Despesas</a></li>
-                    <li><a href="calculadora.html">Calculadora</a></li>
-                    <li><a href="transparencia.html">Legislação</a></li>
-                </ul>
             </div>
-            <div class="footer-copy">Dados: LOA 2026, TCESP, IBGE · Amparo, SP</div>
+            <div class="rodape-creditos">
+                Desenvolvido com ☕ em Amparo &nbsp;|&nbsp; Dados de Domínio Público
+            </div>
         </div>
     </footer>
 

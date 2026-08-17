@@ -1,260 +1,154 @@
 /**
- * IMPOSTÔMETRO DE AMPARO
- * Iniciativa independente de um morador de Amparo - SP.
- * Dados baseados na Lei Orçamentária Anual (LOA) aprovada anualmente.
+ * app.js - Impostômetro de Amparo
+ * Código simples e direto.
  */
 
+// Dados da LOA (Lei Orçamentária Anual) para a base do contador
+// Isso é público, você acha no Portal da Transparência da Prefeitura.
 const DADOS_LOA = {
     '2026': {
         totalAnual: 295_000_000,
         populacao: 68_000,
-        leiNumero: 'Lei Municipal nº 4.321/2025',
         receitas: [
-            { nome: 'Cota-Parte do ICMS', esfera: 'est', percentual: 35.0 },
-            { nome: 'FPM e FUNDEB',        esfera: 'fed', percentual: 28.0 },
-            { nome: 'IPTU',                esfera: 'mun', percentual: 14.0 },
-            { nome: 'ISSQN',               esfera: 'mun', percentual: 12.0 },
-            { nome: 'Cota-Parte do IPVA',  esfera: 'est', percentual: 7.0  },
-            { nome: 'ITBI e Taxas',        esfera: 'mun', percentual: 4.0  },
+            { nome: 'Cota-Parte do ICMS', percentual: 35.0 },
+            { nome: 'FPM e FUNDEB', percentual: 28.0 },
+            { nome: 'IPTU', percentual: 14.0 },
+            { nome: 'ISSQN', percentual: 12.0 },
+            { nome: 'Cota-Parte do IPVA', percentual: 7.0  },
+            { nome: 'ITBI e outras taxas', percentual: 4.0  },
         ],
         despesas: [
-            { cod: '10', nome: 'Saúde',                        percentual: 28.0 },
-            { cod: '12', nome: 'Educação',                     percentual: 25.8 },
-            { cod: '15', nome: 'Urbanismo e Infraestrutura',   percentual: 17.6 },
-            { cod: '04', nome: 'Administração Geral',          percentual: 9.0  },
-            { cod: '08', nome: 'Assistência Social',           percentual: 6.0  },
-            { cod: '06', nome: 'Segurança Pública',            percentual: 4.0  },
-            { cod: '99', nome: 'Demais Funções',               percentual: 9.6  },
+            { id: 'tbl-saude', percentual: 28.0 },
+            { id: 'tbl-educacao', percentual: 25.8 },
+            { id: 'tbl-urbanismo', percentual: 17.6 },
+            { id: 'tbl-admin', percentual: 9.0  },
+            { id: 'tbl-social', percentual: 6.0  },
+            { id: 'tbl-seguranca', percentual: 4.0  },
+            { id: 'tbl-outras', percentual: 9.6  },
         ],
     },
-    '2025': {
-        totalAnual: 272_500_000,
-        populacao: 68_000,
-        leiNumero: 'Lei Municipal nº 4.214/2024',
-        receitas: [
-            { nome: 'Cota-Parte do ICMS', esfera: 'est', percentual: 35.0 },
-            { nome: 'FPM e FUNDEB',        esfera: 'fed', percentual: 28.0 },
-            { nome: 'IPTU',                esfera: 'mun', percentual: 14.0 },
-            { nome: 'ISSQN',               esfera: 'mun', percentual: 12.0 },
-            { nome: 'Cota-Parte do IPVA',  esfera: 'est', percentual: 7.0  },
-            { nome: 'ITBI e Taxas',        esfera: 'mun', percentual: 4.0  },
-        ],
-        despesas: [
-            { cod: '10', nome: 'Saúde',                        percentual: 28.0 },
-            { cod: '12', nome: 'Educação',                     percentual: 25.8 },
-            { cod: '15', nome: 'Urbanismo e Infraestrutura',   percentual: 17.6 },
-            { cod: '04', nome: 'Administração Geral',          percentual: 9.0  },
-            { cod: '08', nome: 'Assistência Social',           percentual: 6.0  },
-            { cod: '06', nome: 'Segurança Pública',            percentual: 4.0  },
-            { cod: '99', nome: 'Demais Funções',               percentual: 9.6  },
-        ],
-    },
-    '2024': {
-        totalAnual: 248_000_000,
-        populacao: 68_000,
-        leiNumero: 'Lei Municipal nº 4.087/2023',
-        receitas: [
-            { nome: 'Cota-Parte do ICMS', esfera: 'est', percentual: 35.0 },
-            { nome: 'FPM e FUNDEB',        esfera: 'fed', percentual: 28.0 },
-            { nome: 'IPTU',                esfera: 'mun', percentual: 14.0 },
-            { nome: 'ISSQN',               esfera: 'mun', percentual: 12.0 },
-            { nome: 'Cota-Parte do IPVA',  esfera: 'est', percentual: 7.0  },
-            { nome: 'ITBI e Taxas',        esfera: 'mun', percentual: 4.0  },
-        ],
-        despesas: [
-            { cod: '10', nome: 'Saúde',                        percentual: 28.0 },
-            { cod: '12', nome: 'Educação',                     percentual: 25.8 },
-            { cod: '15', nome: 'Urbanismo e Infraestrutura',   percentual: 17.6 },
-            { cod: '04', nome: 'Administração Geral',          percentual: 9.0  },
-            { cod: '08', nome: 'Assistência Social',           percentual: 6.0  },
-            { cod: '06', nome: 'Segurança Pública',            percentual: 4.0  },
-            { cod: '99', nome: 'Demais Funções',               percentual: 9.6  },
-        ],
-    }
+    '2025': { totalAnual: 272_500_000, populacao: 68_000, receitas: [], despesas: [] },
+    '2024': { totalAnual: 248_000_000, populacao: 68_000, receitas: [], despesas: [] }
 };
 
-// ── Helpers ────────────────────────────────────────────────────
+// Formata pra Reais (R$)
+const formataReal = (valor) => valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-function brl(valor) {
-    return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: 2 });
-}
-
-function el(id) { return document.getElementById(id); }
-
-// ── Data de hoje ───────────────────────────────────────────────
-
-function carregarData() {
-    const hoje = new Date().toLocaleDateString('pt-BR');
-    const targets = document.querySelectorAll('.js-data-hoje');
-    targets.forEach(t => t.textContent = hoje);
-}
-
-// ── Impostômetro ao vivo ────────────────────────────────────────
-// Calcula quanto o município já arrecadou desde 00h00 de 01/01/2026
-// baseado na projeção linear da LOA 2026.
-
-function iniciarImpostometro() {
-    const loa = DADOS_LOA['2026'];
-    const SEGUNDOS_ANO = 365 * 24 * 60 * 60;          // 31.536.000 s
-    const TAXA_POR_SEGUNDO = loa.totalAnual / SEGUNDOS_ANO; // ≈ R$ 9,35/s
-
-    const inicioAno = new Date('2026-01-01T00:00:00');
-    const exibirValor = el('impostometro-value');
-    const exibirTaxa  = el('impostometro-rate-value');
-
-    if (!exibirValor) return;
-
-    if (exibirTaxa) {
-        exibirTaxa.textContent = brl(TAXA_POR_SEGUNDO) + '/s';
+function iniciaMenuMobile() {
+    const btn = document.getElementById('btn-menu');
+    const menu = document.getElementById('menu-principal');
+    if (btn && menu) {
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('mostrar');
+            btn.textContent = menu.classList.contains('mostrar') ? 'Fechar menu ✕' : 'Menu ☰';
+        });
     }
+}
 
-    function calcularAtual() {
+// O motorzinho do impostômetro
+function iniciaContador() {
+    const elementoValor = document.getElementById('impostometro-valor');
+    if (!elementoValor) return;
+
+    // R$ 295 milhões por ano dividido pelos segundos do ano todo
+    const segundosNoAno = 365 * 24 * 60 * 60;
+    const taxaPorSegundo = DADOS_LOA['2026'].totalAnual / segundosNoAno; 
+    
+    // Começa sempre em 1º de Janeiro do ano atual (usando 2026 de base)
+    const inicioDoAno = new Date('2026-01-01T00:00:00');
+
+    function atualiza() {
         const agora = new Date();
-        const segundosdecorridos = Math.max(0, (agora - inicioAno) / 1000);
-        return segundosdecorridos * TAXA_POR_SEGUNDO;
+        const segundosAteAgora = Math.max(0, (agora - inicioDoAno) / 1000);
+        const valorAcumulado = segundosAteAgora * taxaPorSegundo;
+        
+        elementoValor.textContent = formataReal(valorAcumulado);
     }
 
-    // Inicializar
-    exibirValor.textContent = brl(calcularAtual());
-
-    // Atualizar a cada segundo
-    setInterval(() => {
-        exibirValor.textContent = brl(calcularAtual());
-    }, 1000);
+    // Roda direto
+    atualiza();
+    setInterval(atualiza, 1000); // 1 vez por segundo
 }
 
-// ── Tabelas de Receitas ────────────────────────────────────────
-
-function preencherReceitas(exercicio) {
-    const loa = DADOS_LOA[exercicio];
-    if (!loa) return;
-
-    const ids = [
-        'tbl-icms', 'tbl-fpm', 'tbl-iptu',
-        'tbl-iss',  'tbl-ipva', 'tbl-itbi'
-    ];
-
-    loa.receitas.forEach((r, i) => {
-        const cel = el(ids[i]);
-        if (cel) cel.textContent = brl(loa.totalAnual * r.percentual / 100);
-    });
-}
-
-// ── Tabelas de Despesas ────────────────────────────────────────
-
-function preencherDespesas(exercicio) {
-    const loa = DADOS_LOA[exercicio];
-    if (!loa) return;
-
-    const ids = [
-        'tbl-saude', 'tbl-educacao', 'tbl-urbanismo',
-        'tbl-admin', 'tbl-social',   'tbl-seguranca', 'tbl-outras'
-    ];
-
-    loa.despesas.forEach((d, i) => {
-        const cel = el(ids[i]);
-        if (cel) cel.textContent = brl(loa.totalAnual * d.percentual / 100);
-    });
-}
-
-// ── Seletor de Exercício ───────────────────────────────────────
-
-function ativarSeletor() {
-    const sel = el('select-exercicio');
-    if (!sel) return;
-
-    function atualizar(ex) {
-        document.querySelectorAll('.js-exercicio').forEach(x => x.textContent = ex);
-        preencherReceitas(ex);
-        preencherDespesas(ex);
-
-        const loa = DADOS_LOA[ex];
-        if (!loa) return;
-
-        const elTotal = el('js-total-loa');
-        if (elTotal) elTotal.textContent = brl(loa.totalAnual);
-
-        const elPc = el('js-per-capita');
-        if (elPc) elPc.textContent = brl(loa.totalAnual / loa.populacao);
-    }
-
-    sel.addEventListener('change', e => atualizar(e.target.value));
-    atualizar(sel.value);
-}
-
-// ── Calculadora Tributária ─────────────────────────────────────
-
-function ativarCalculadora() {
-    const btn = el('btn-calcular');
+function iniciaCalculadora() {
+    const btn = document.getElementById('btn-calcula');
     if (!btn) return;
 
     btn.addEventListener('click', () => {
-        const renda   = parseFloat(el('input-renda')?.value)   || 0;
-        const consumo = parseFloat(el('input-consumo')?.value) || 0;
-        const iptu    = parseFloat(el('input-iptu')?.value)    || 0;
-        const ipva    = parseFloat(el('input-ipva')?.value)    || 0;
+        const renda = Number(document.getElementById('renda')?.value || 0);
+        const consumo = Number(document.getElementById('consumo')?.value || 0);
+        const iptu = Number(document.getElementById('iptu')?.value || 0);
+        const ipva = Number(document.getElementById('ipva')?.value || 0);
 
-        // IRPF 2026 (tabela progressiva)
-        let irpf = 0;
-        if      (renda > 4664.68) irpf = renda * 0.275 - 896.00;
-        else if (renda > 3751.05) irpf = renda * 0.225 - 662.77;
-        else if (renda > 2826.65) irpf = renda * 0.150 - 381.44;
-        else if (renda > 2259.20) irpf = renda * 0.075 - 169.44;
+        // Tabela do IRPF simplificada
+        let irpfMensal = 0;
+        if (renda > 4664.68) irpfMensal = (renda * 0.275) - 896.00;
+        else if (renda > 3751.05) irpfMensal = (renda * 0.225) - 662.77;
+        else if (renda > 2826.65) irpfMensal = (renda * 0.15) - 381.44;
+        else if (renda > 2259.20) irpfMensal = (renda * 0.075) - 169.44;
 
-        const icmsConsumo = consumo * 12 * 0.275; // encargo estimado sobre consumo
+        // Impostos no consumo (média Brasil é uns 27,5% somando IPi, ICMS, Pis/Cofins etc)
+        const impostoConsumo = consumo * 0.275;
 
-        const totalMun  = iptu + icmsConsumo * 0.20;
-        const totalEst  = ipva + icmsConsumo * 0.50;
-        const totalFed  = irpf * 12 + icmsConsumo * 0.30;
-        const totalGeral = totalMun + totalEst + totalFed;
+        // Divisão por esfera (aproximada para fins educativos)
+        const pagoMunicipio = iptu + (impostoConsumo * 0.15) * 12; // ICMS que volta, ISS
+        const pagoEstado = ipva + (impostoConsumo * 0.45) * 12; // Fica boa parte do ICMS
+        const pagoUniao = (irpfMensal * 12) + (impostoConsumo * 0.40) * 12; // IRPF, Pis/cofins
+        
+        const total = pagoMunicipio + pagoEstado + pagoUniao;
 
-        if (el('res-mun'))   el('res-mun').textContent   = brl(totalMun);
-        if (el('res-est'))   el('res-est').textContent   = brl(totalEst);
-        if (el('res-fed'))   el('res-fed').textContent   = brl(totalFed);
-        if (el('res-total')) el('res-total').textContent = brl(totalGeral);
+        document.getElementById('total-mun').textContent = formataReal(pagoMunicipio);
+        document.getElementById('total-est').textContent = formataReal(pagoEstado);
+        document.getElementById('total-fed').textContent = formataReal(pagoUniao);
+        document.getElementById('total-tudo').textContent = formataReal(total);
+        
+        document.getElementById('area-resultado').style.display = 'block';
     });
 }
 
-// ── Gráfico de Barras (Chart.js) ────────────────────────────────
+function iniciaGrafico() {
+    const canvas = document.getElementById('grafico-receitas');
+    if (!canvas || typeof Chart === 'undefined') return;
 
-function iniciarGrafico() {
-    if (typeof Chart === 'undefined') return;
-    const canvas = el('chart-receitas');
-    if (!canvas) return;
+    const labels = DADOS_LOA['2026'].receitas.map(r => r.nome);
+    const dados = DADOS_LOA['2026'].receitas.map(r => r.percentual);
 
     new Chart(canvas, {
-        type: 'bar',
+        type: 'pie', // Pizza fica mais agradável que barras
         data: {
-            labels: ['ICMS\n35%', 'FPM/FUNDEB\n28%', 'IPTU\n14%', 'ISSQN\n12%', 'IPVA\n7%', 'Outros\n4%'],
+            labels: labels,
             datasets: [{
-                label: 'Participação (%)',
-                data: [35, 28, 14, 12, 7, 4],
-                backgroundColor: '#2563eb',
-                borderRadius: 4,
-                borderSkipped: false,
+                data: dados,
+                backgroundColor: ['#1a365d', '#2b6cb0', '#3182ce', '#4299e1', '#63b3ed', '#90cdf4'],
+                borderWidth: 2,
+                borderColor: '#ffffff'
             }]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
-            scales: {
-                x: { grid: { display: false } },
-                y: {
-                    beginAtZero: true, max: 40,
-                    ticks: { callback: v => v + '%' }
-                }
+            plugins: {
+                legend: { position: 'right' }
             }
         }
     });
 }
 
-// ── Init ───────────────────────────────────────────────────────
+function preencheTabelas() {
+    // Para a página de despesas (retorno.html)
+    const loaAtual = DADOS_LOA['2026'];
+    if (!loaAtual || loaAtual.despesas.length === 0) return;
+    
+    loaAtual.despesas.forEach(d => {
+        const cel = document.getElementById(d.id);
+        if (cel) cel.textContent = formataReal(loaAtual.totalAnual * (d.percentual / 100));
+    });
+}
 
 document.addEventListener('DOMContentLoaded', () => {
-    carregarData();
-    iniciarImpostometro();
-    ativarSeletor();
-    ativarCalculadora();
-    iniciarGrafico();
+    iniciaMenuMobile();
+    iniciaContador();
+    iniciaCalculadora();
+    iniciaGrafico();
+    preencheTabelas();
 });

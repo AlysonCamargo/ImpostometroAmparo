@@ -3,130 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quanto eu pago? — Impostômetro de Amparo</title>
-    <meta name="description" content="Estime sua contribuição tributária anual pelos três níveis de governo — municipal, estadual e federal.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Calculadora de Impostos - Impostômetro de Amparo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <div class="notice-bar">Projeto independente de um morador de Amparo — não é site oficial da Prefeitura.</div>
+    <div class="faixa-aviso">
+        👋 Olá! Site mantido por um morador de Amparo para entendermos as contas da cidade. Não é da Prefeitura.
+    </div>
 
-    <header class="site-header">
-        <div class="container header-row">
-            <a href="index.html" class="brand">
-                <div class="brand-name">Impostômetro de Amparo</div>
-                <div class="brand-sub">Amparo · Estância Hidromineral · SP</div>
+    <header class="topo-site">
+        <div class="conteiner topo-flex">
+            <a href="index.html" class="logo-link">
+                <div class="logo-titulo">Impostômetro de Amparo</div>
+                <div class="logo-sub">Entendendo as contas do nosso município</div>
             </a>
-            <div class="header-date"><span class="js-data-hoje">--/--/----</span></div>
         </div>
     </header>
 
-    <nav class="site-nav">
-        <div class="container">
-            <ul class="nav-list">
-                <li><a href="index.html">Impostômetro</a></li>
-                <li><a href="tributos.html">De onde vem?</a></li>
-                <li><a href="retorno.html">Para onde vai?</a></li>
-                <li><a href="calculadora.html" class="active">Quanto eu pago?</a></li>
+    <nav class="barra-menu">
+        <div class="conteiner">
+            <button id="btn-menu" class="menu-toggle">Menu ☰</button>
+            <ul id="menu-principal" class="lista-menu">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="tributos.html">O que a gente paga</a></li>
+                <li><a href="retorno.html">No que é gasto</a></li>
+                <li><a href="calculadora.html" class="ativo">Simule o seu</a></li>
                 <li><a href="circuito.html">Região</a></li>
-                <li><a href="transparencia.html">Legislação</a></li>
+                <li><a href="transparencia.html">Transparência</a></li>
             </ul>
         </div>
     </nav>
 
-    <div class="container pb">
-        <div class="page-head">
-            <div class="crumb"><a href="index.html">Início</a> › Quanto eu pago?</div>
-            <h2>Estime quanto você paga de imposto por ano</h2>
-            <p>Uma estimativa educativa — não um demonstrativo oficial. Os valores reais variam conforme deduções e produtos.</p>
+    <main class="conteiner">
+        <div class="cabecalho-pagina">
+            <h1 class="titulo-pagina">Faça a sua estimativa</h1>
+            <p class="subtitulo-pagina">Você não para pra pensar nisso no dia a dia, mas... faz as contas.</p>
         </div>
 
-        <div class="layout">
-            <div>
-                <div class="section">
-                    <div class="section-title">Seus dados de referência</div>
-                    <div class="section-body">
-                        <div class="form-grid">
-                            <div class="field">
-                                <label for="input-renda">Renda mensal bruta (R$)</label>
-                                <input type="number" id="input-renda" value="4500" min="0" step="100">
-                            </div>
-                            <div class="field">
-                                <label for="input-consumo">Gastos mensais com consumo (R$)</label>
-                                <input type="number" id="input-consumo" value="2800" min="0" step="100">
-                            </div>
-                            <div class="field">
-                                <label for="input-iptu">IPTU anual em Amparo (R$)</label>
-                                <input type="number" id="input-iptu" value="1200" min="0" step="50">
-                            </div>
-                            <div class="field">
-                                <label for="input-ipva">IPVA anual do veículo (R$)</label>
-                                <input type="number" id="input-ipva" value="1500" min="0" step="50">
-                            </div>
-                        </div>
-                        <button id="btn-calcular" class="btn btn-full">Calcular estimativa</button>
+        <div class="conteudo-texto">
+            <p>A carga tributária no Brasil é uma loucura porque embutida no preço do mercado e no seu salário tem impostos indo pra Brasília, outros para São Paulo (Estado) e os carnês que a gente paga na Prefeitura.</p>
+            <p>Joguei as regras médias na calculadora abaixo para você ter um choque de realidade do quanto acaba pagando no total em um ano:</p>
+            
+            <div class="duas-colunas" style="margin-top: 30px;">
+                <!-- Formulário -->
+                <div class="area-calculadora">
+                    <h3 style="margin: 0 0 20px 0; font-size: 18px;">Preencha seus valores mensais/anuais</h3>
+                    
+                    <div class="grupo-form">
+                        <label for="renda">Seu salário/renda MENSAL bruta (R$)</label>
+                        <input type="number" id="renda" class="controle-input" value="4000" placeholder="Ex: 4000">
                     </div>
-                </div>
-
-                <div class="section">
-                    <div class="section-title">Resultado estimado</div>
-                    <div class="section-body">
-                        <div class="result-line">
-                            <span>Municipal (IPTU, ISS)</span>
-                            <strong id="res-mun">—</strong>
-                        </div>
-                        <div class="result-line">
-                            <span>Estadual (IPVA, ICMS no consumo)</span>
-                            <strong id="res-est">—</strong>
-                        </div>
-                        <div class="result-line">
-                            <span>Federal (IRPF, PIS/COFINS)</span>
-                            <strong id="res-fed">—</strong>
-                        </div>
-                        <div class="result-line result-total">
-                            <span>Total estimado no ano</span>
-                            <span id="res-total">—</span>
-                        </div>
+                    
+                    <div class="grupo-form">
+                        <label for="consumo">Quanto dá seu cartão de crédito/gastos no mês? (R$)</label>
+                        <input type="number" id="consumo" class="controle-input" value="2500" placeholder="Ex: 2500">
                     </div>
-                </div>
 
-                <div class="note">
-                    <strong>Isenção de IPTU em Amparo:</strong> Aposentados, pensionistas e beneficiários do BPC com renda até 2 salários mínimos e dono de único imóvel residencial podem ter isenção total. Consulte a Secretaria de Finanças.
-                </div>
-            </div>
-
-            <aside>
-                <div class="aside-section">
-                    <div class="aside-title">Metodologia</div>
-                    <div class="aside-body">
-                        <p style="font-size: 12px; line-height: 1.6; color: var(--ink-2);">
-                            IRPF pela tabela progressiva 2026 (RFB). Consumo: encargo médio de 27,5% (ICMS + PIS + COFINS) distribuído entre as esferas. IPTU e IPVA conforme informado.
-                        </p>
+                    <div class="grupo-form">
+                        <label for="iptu">Carnê do IPTU ANUAL total da sua casa (R$)</label>
+                        <input type="number" id="iptu" class="controle-input" value="800" placeholder="O que você paga em Amparo">
                     </div>
-                </div>
-            </aside>
-        </div>
-    </div>
 
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-row">
+                    <div class="grupo-form">
+                        <label for="ipva">Seu IPVA ANUAL do carro/moto (R$)</label>
+                        <input type="number" id="ipva" class="controle-input" value="1200" placeholder="Se não tiver, ponha zero">
+                    </div>
+
+                    <button id="btn-calcula" class="btn-acao">Quero chorar (Calcular)</button>
+                </div>
+
+                <!-- Resultado -->
                 <div>
-                    <div class="footer-name">Impostômetro de Amparo</div>
-                    <div class="footer-note">Projeto de um morador. Não é site oficial da Prefeitura.</div>
+                    <div id="area-resultado" class="area-resultado" style="display: none;">
+                        <h3 style="margin-top: 0;">Estimativa da facada anual</h3>
+                        <p style="font-size: 13px; color: #718096; margin-bottom: 20px;">Isso aqui simula quanto de imposto (direto e do supermercado/loja) deve voar da sua mão em 1 ano pra cada gaveta.</p>
+                        
+                        <div class="linha-resultado">
+                            <span>Prefeitura de Amparo <strong>(IPTU + repasses do que você compra)</strong></span>
+                            <span class="col-numero" id="total-mun">R$ 0</span>
+                        </div>
+                        <div class="linha-resultado">
+                            <span>Estado de SP <strong>(IPVA + ICMS)</strong></span>
+                            <span class="col-numero" id="total-est">R$ 0</span>
+                        </div>
+                        <div class="linha-resultado">
+                            <span>Governo Federal <strong>(IRRF salário + PIS/COFINS)</strong></span>
+                            <span class="col-numero" id="total-fed">R$ 0</span>
+                        </div>
+                        
+                        <div class="linha-resultado">
+                            <span>Tributos no ano todo:</span>
+                            <span class="col-numero" id="total-tudo">R$ 0</span>
+                        </div>
+                    </div>
+
+                    <div class="caixa-dica" style="margin-top: 20px;">
+                        <strong>Para os nerds (o "disclaimer"):</strong>
+                        Fiz uma conta de padaria de luxo. A regra usa tabela do IR progressivo de verdade, mas assume uma taxação média de 27,5% em cima do seu gasto de consumo para ICMS, IPI, etc. Obviamente, se você comprar só remédios é uma taxa, se comprar bebida, é outra. Mas dá aquela noção básica, não acha?
+                    </div>
                 </div>
-                <ul class="f-nav">
-                    <li><a href="index.html">Início</a></li>
-                    <li><a href="tributos.html">Receitas</a></li>
-                    <li><a href="retorno.html">Despesas</a></li>
-                    <li><a href="calculadora.html">Calculadora</a></li>
-                    <li><a href="transparencia.html">Legislação</a></li>
-                </ul>
             </div>
-            <div class="footer-copy">Dados: LOA 2026, TCESP, IBGE · Amparo, SP</div>
+
+        </div>
+    </main>
+
+    <footer class="rodape-site">
+        <div class="conteiner">
+            <div class="rodape-creditos">
+                Desenvolvido com ☕ em Amparo &nbsp;|&nbsp; Não fuja dos impostos, apenas fiscalize!
+            </div>
         </div>
     </footer>
 

@@ -3,166 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>De onde vem o dinheiro? — Impostômetro de Amparo</title>
-    <meta name="description" content="Receitas tributárias e transferências que compõem o orçamento do Município de Amparo/SP.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>De onde vem o dinheiro? - Impostômetro de Amparo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
-    <div class="notice-bar">Projeto independente de um morador de Amparo — não é site oficial da Prefeitura.</div>
+    <div class="faixa-aviso">
+        👋 Olá! Site mantido por um morador de Amparo para entendermos as contas da cidade. Não é da Prefeitura.
+    </div>
 
-    <header class="site-header">
-        <div class="container header-row">
-            <a href="index.html" class="brand">
-                <div class="brand-name">Impostômetro de Amparo</div>
-                <div class="brand-sub">Amparo · Estância Hidromineral · SP</div>
+    <header class="topo-site">
+        <div class="conteiner topo-flex">
+            <a href="index.html" class="logo-link">
+                <div class="logo-titulo">Impostômetro de Amparo</div>
+                <div class="logo-sub">Entendendo as contas do nosso município</div>
             </a>
-            <div class="header-date">
-                <select id="select-exercicio" class="exer-select">
-                    <option value="2026" selected>2026 (LOA)</option>
-                    <option value="2025">2025</option>
-                    <option value="2024">2024</option>
-                </select>
-            </div>
         </div>
     </header>
 
-    <nav class="site-nav">
-        <div class="container">
-            <ul class="nav-list">
-                <li><a href="index.html">Impostômetro</a></li>
-                <li><a href="tributos.html" class="active">De onde vem?</a></li>
-                <li><a href="retorno.html">Para onde vai?</a></li>
-                <li><a href="calculadora.html">Quanto eu pago?</a></li>
+    <nav class="barra-menu">
+        <div class="conteiner">
+            <button id="btn-menu" class="menu-toggle">Menu ☰</button>
+            <ul id="menu-principal" class="lista-menu">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="tributos.html" class="ativo">O que a gente paga</a></li>
+                <li><a href="retorno.html">No que é gasto</a></li>
+                <li><a href="calculadora.html">Simule o seu</a></li>
                 <li><a href="circuito.html">Região</a></li>
-                <li><a href="transparencia.html">Legislação</a></li>
+                <li><a href="transparencia.html">Transparência</a></li>
             </ul>
         </div>
     </nav>
 
-    <div class="container pb">
-        <div class="page-head">
-            <div class="crumb"><a href="index.html">Início</a> › De onde vem o dinheiro?</div>
-            <h2>De onde vem a receita de Amparo?</h2>
-            <p>O município tem três fontes: impostos próprios, repasses do Estado e transferências da União.</p>
+    <main class="conteiner">
+        <div class="cabecalho-pagina">
+            <h1 class="titulo-pagina">Afinal, de onde vem a dinheirama?</h1>
+            <p class="subtitulo-pagina">Muita gente acha que a prefeitura vive só do IPTU, mas a história é bem diferente...</p>
         </div>
 
-        <div class="layout">
-            <div>
-                <div class="section">
-                    <div class="section-title">Composição da receita — exercício <span class="js-exercicio">2026</span></div>
-                    <table class="tbl">
-                        <thead>
-                            <tr>
-                                <th>Fonte</th>
-                                <th>Origem</th>
-                                <th>O que é</th>
-                                <th class="num">%</th>
-                                <th class="num">Previsão LOA</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Cota-Parte ICMS</strong></td>
-                                <td><span class="tag tag-est">Estadual</span></td>
-                                <td>25% do ICMS arrecadado em SP dividido entre municípios.</td>
-                                <td class="num">35%</td>
-                                <td class="num" id="tbl-icms">—</td>
-                            </tr>
-                            <tr>
-                                <td><strong>FPM e FUNDEB</strong></td>
-                                <td><span class="tag tag-fed">Federal</span></td>
-                                <td>Repasses da União e fundo da educação básica.</td>
-                                <td class="num">28%</td>
-                                <td class="num" id="tbl-fpm">—</td>
-                            </tr>
-                            <tr>
-                                <td><strong>IPTU</strong></td>
-                                <td><span class="tag tag-mun">Municipal</span></td>
-                                <td>Imposto sobre imóveis urbanos cobrado pela prefeitura.</td>
-                                <td class="num">14%</td>
-                                <td class="num" id="tbl-iptu">—</td>
-                            </tr>
-                            <tr>
-                                <td><strong>ISSQN</strong></td>
-                                <td><span class="tag tag-mun">Municipal</span></td>
-                                <td>Imposto sobre serviços prestados no município.</td>
-                                <td class="num">12%</td>
-                                <td class="num" id="tbl-iss">—</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Cota-Parte IPVA</strong></td>
-                                <td><span class="tag tag-est">Estadual</span></td>
-                                <td>50% do IPVA dos veículos licenciados em Amparo.</td>
-                                <td class="num">7%</td>
-                                <td class="num" id="tbl-ipva">—</td>
-                            </tr>
-                            <tr>
-                                <td><strong>ITBI e Taxas</strong></td>
-                                <td><span class="tag tag-mun">Municipal</span></td>
-                                <td>Imposto na venda de imóveis e taxas de serviços.</td>
-                                <td class="num">4%</td>
-                                <td class="num" id="tbl-itbi">—</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="section">
-                    <div class="section-title">Distribuição visual</div>
-                    <div class="section-body">
-                        <div class="chart-wrap">
-                            <canvas id="chart-receitas"></canvas>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="note">
-                    <strong>Por que o ICMS domina?</strong> Municípios menores têm arrecadação própria limitada. A cota-parte do ICMS — calculada com base no valor adicionado fiscal — costuma ser a maior fonte de receita das prefeituras paulistas.
-                </div>
+        <div class="conteudo-texto">
+            <p>Se você olhar direitinho para as contas de Amparo, vai perceber que a maior parte da grana que sustenta a cidade <strong>não é arrecadada diretamente aqui no balcão da prefeitura</strong>. A gente depende muito, mas muito mesmo, do governo do Estado de São Paulo e lá de Brasília (União).</p>
+            
+            <p>Eu peguei a previsão oficial que a Câmara votou para o ano (a famosa LOA - Lei Orçamentária Anual) e desenhei como esse bolo que passa dos <strong>R$ 295 milhões</strong> se divide:</p>
+            
+            <div class="container-grafico">
+                <canvas id="grafico-receitas"></canvas>
             </div>
 
-            <aside>
-                <div class="aside-section">
-                    <div class="aside-title">Por esfera</div>
-                    <div class="aside-body">
-                        <ul class="kv-list">
-                            <li class="kv"><span class="kv-key">Estaduais</span><span class="kv-value">42%</span></li>
-                            <li class="kv"><span class="kv-key">Federais</span><span class="kv-value">28%</span></li>
-                            <li class="kv"><span class="kv-key">Próprios</span><span class="kv-value">30%</span></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="aside-section">
-                    <div class="aside-title">Base legal</div>
-                    <div class="aside-body">
-                        <p style="font-size: 12px; line-height: 1.55; color: var(--ink-2);">Constituição Federal de 1988, arts. 155 a 162.</p>
-                    </div>
-                </div>
-            </aside>
+            <h3>Explicando cada fatia</h3>
+            <p>Pra não ficar chato, fiz um resuminho do que cada um desses palavrões significa no nosso dia a dia:</p>
+
+            <table class="tabela-dados">
+                <thead>
+                    <tr>
+                        <th>Nome bonitinho</th>
+                        <th>De onde vem de verdade</th>
+                        <th class="col-numero">Peso no orçamento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Cota-Parte do ICMS</strong></td>
+                        <td>Sabe o imposto embutido em quase tudo que compramos no supermercado e na conta de luz? Parte dele vai pro Estado de SP e volta para cá. É a nossa maior fonte de renda.</td>
+                        <td class="col-numero">35%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>FPM e FUNDEB</strong></td>
+                        <td>A mesada do Governo Federal (Fundo de Participação dos Municípios) e a grana pra ajudar na educação. Dependemos muito disso também.</td>
+                        <td class="col-numero">28%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>IPTU</strong></td>
+                        <td>O clássico carnezzinho verde da casa própria. Pesa no bolso do proprietário, mas sozinho não banca nem um quinto da cidade.</td>
+                        <td class="col-numero">14%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ISSQN</strong></td>
+                        <td>O imposto de quem presta serviço. Se você vai num consultório, ou amarra um contrato de serviço grande, a prefeitura morde uma beirada aqui.</td>
+                        <td class="col-numero">12%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>IPVA (Cota-Parte)</strong></td>
+                        <td>Sim, quando você paga o IPVA do carro, metade do valor fica com o Estado de SP e a outra metade volta certinho para os cofres de Amparo.</td>
+                        <td class="col-numero">7%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ITBI e Taxas avulsas</strong></td>
+                        <td>Aqui entra aquele imposto de quando você compra/vende um imóvel, mais taxas de lixo, iluminação, alvará de funcionamento etc.</td>
+                        <td class="col-numero">4%</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="caixa-dica">
+                <strong>Resumo da ópera:</strong> Quase metade (42%) do que Amparo gasta vem de impostos que o Estado recolhe e repassa. Outros 28% vem de Brasília. Na prática, só uns 30% do que sustenta a cidade é recolhido "no balcão" (como IPTU e ISS). 
+            </div>
         </div>
-    </div>
+    </main>
 
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-row">
-                <div>
-                    <div class="footer-name">Impostômetro de Amparo</div>
-                    <div class="footer-note">Projeto de um morador. Não é site oficial da Prefeitura.</div>
+    <footer class="rodape-site">
+        <div class="conteiner">
+            <div class="rodape-conteudo">
+                <div class="rodape-sobre">
+                    <h4>Impostômetro de Amparo</h4>
+                    <p>Feito por um morador inquieto tentando deixar o "titiques" das contas públicas mais fácil de entender pra todo mundo. Sem vínculos partidários.</p>
                 </div>
-                <ul class="f-nav">
-                    <li><a href="index.html">Início</a></li>
-                    <li><a href="tributos.html">Receitas</a></li>
-                    <li><a href="retorno.html">Despesas</a></li>
-                    <li><a href="calculadora.html">Calculadora</a></li>
-                    <li><a href="transparencia.html">Legislação</a></li>
-                </ul>
             </div>
-            <div class="footer-copy">Dados: LOA 2026, TCESP, IBGE · Amparo, SP</div>
+            <div class="rodape-creditos">
+                Desenvolvido com ☕ em Amparo &nbsp;|&nbsp; Dados de Domínio Público
+            </div>
         </div>
     </footer>
 
