@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal da Transparência — Prefeitura Municipal de Amparo / SP</title>
-    <meta name="description" content="Portal oficial de transparência fiscal e prestação de contas da Prefeitura Municipal de Amparo - Estado de São Paulo.">
+    <title>Impostômetro de Amparo — Quanto o município já arrecadou?</title>
+    <meta name="description" content="Acompanhe em tempo real quanto o Município de Amparo já arrecadou neste exercício fiscal. Iniciativa independente de um morador.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -12,159 +12,126 @@
 </head>
 <body>
 
-    <!-- Topbar Institucional -->
-    <div class="gov-header-top">
-        <div class="container top-flex">
-            <div class="top-left">PREFEITURA MUNICIPAL DE AMPARO — ESTADO DE SÃO PAULO</div>
-            <div class="top-right">Data de Atualização: <strong id="data-atualizacao">--/--/----</strong></div>
-        </div>
+    <!-- Aviso de Iniciativa Independente -->
+    <div class="citizen-strip">
+        Iniciativa independente de um morador de Amparo. Dados baseados na LOA aprovada pela Câmara Municipal. Não é site oficial da Prefeitura.
     </div>
 
-    <!-- Cabeçalho Principal -->
-    <header class="gov-header-main">
-        <div class="container header-flex">
-            <div class="header-brand">
-                <a href="index.html">
-                    <div class="brand-seal">PMA</div>
-                    <div class="brand-info">
-                        <h1>PORTAL DA TRANSPARÊNCIA</h1>
-                        <p>Prefeitura Municipal da Estância Hidromineral de Amparo</p>
-                    </div>
-                </a>
-            </div>
-            <div class="header-actions">
-                <label for="select-exercicio" style="font-size: 11px; font-weight: 700; color: var(--text-muted);">EXERCÍCIO FISCAL:</label>
-                <select id="select-exercicio" class="gov-select">
-                    <option value="2026" selected>2026 (Lei nº 4.321)</option>
-                    <option value="2025">2025 (Consolidado)</option>
-                    <option value="2024">2024 (Consolidado)</option>
-                </select>
-                <button class="gov-btn" onclick="window.print()">Imprimir Página</button>
+    <!-- Cabeçalho -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="site-brand">
+                <h1>Impostômetro de Amparo</h1>
+                <div class="city-tag">Amparo &middot; Estância Hidromineral &middot; Estado de São Paulo</div>
+            </a>
+            <div class="header-meta">
+                Atualizado em: <strong class="js-data-hoje">--/--/----</strong><br>
+                Dados: LOA 2026
             </div>
         </div>
     </header>
 
-    <!-- Navegação Oficial -->
-    <nav class="gov-navbar">
+    <!-- Navegação -->
+    <nav class="site-nav">
         <div class="container">
-            <ul class="nav-menu">
-                <li><a href="index.html" class="active">Início</a></li>
-                <li><a href="tributos.html">Receitas Tributárias</a></li>
-                <li><a href="retorno.html">Despesas por Função</a></li>
-                <li><a href="calculadora.html">Consulta Tributária</a></li>
-                <li><a href="circuito.html">Dados Regionais</a></li>
+            <ul class="nav-list">
+                <li><a href="index.html" class="active">Impostômetro</a></li>
+                <li><a href="tributos.html">De onde vem o dinheiro?</a></li>
+                <li><a href="retorno.html">Para onde vai?</a></li>
+                <li><a href="calculadora.html">Quanto eu pago?</a></li>
+                <li><a href="circuito.html">Comparativo Regional</a></li>
                 <li><a href="transparencia.html">Legislação e LAI</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Banner da Seção -->
-    <div class="section-banner">
-        <div class="container">
-            <h2>Execução Orçamentária e Prestação de Contas</h2>
-            <p>Acompanhamento da receita orçamentária e execução da despesa pública do Município de Amparo.</p>
+    <!-- Corpo -->
+    <div class="page-body">
+        <div class="container" style="padding-top: 28px;">
+
+            <!-- Impostômetro ao Vivo -->
+            <div class="impostometro-hero">
+                <div class="impostometro-label">Amparo arrecadou em 2026 (desde 01/jan)</div>
+                <div id="impostometro-value" class="impostometro-value">R$ 0,00</div>
+                <div class="impostometro-rate">
+                    Ritmo de arrecadação projetado: <strong id="impostometro-rate-value">R$ 0,00/s</strong>
+                    &nbsp;&middot;&nbsp; Base: LOA 2026 — R$ 295 milhões/ano
+                </div>
+                <div class="impostometro-explain">
+                    Este valor sobe continuamente porque o município arrecada tributos todos os dias — ISS sobre serviços, IPTU sobre imóveis, repasses do ICMS e IPVA do Estado, FPM da União, entre outros. O ritmo mostrado acima é a média linear da previsão orçamentária aprovada pela Câmara Municipal.
+                </div>
+            </div>
+
+            <!-- KPIs -->
+            <div class="kpi-strip">
+                <div class="kpi-box">
+                    <div class="kpi-val" id="js-total-loa">R$ 0,00</div>
+                    <div class="kpi-lbl">Orçamento anual previsto (LOA 2026)</div>
+                </div>
+                <div class="kpi-box">
+                    <div class="kpi-val" id="js-per-capita">R$ 0,00</div>
+                    <div class="kpi-lbl">Receita per capita / ano (68 mil hab.)</div>
+                </div>
+                <div class="kpi-box">
+                    <div class="kpi-val">R$ 9,35</div>
+                    <div class="kpi-lbl">Arrecadação estimada por segundo</div>
+                </div>
+                <div class="kpi-box">
+                    <div class="kpi-val">28,0%</div>
+                    <div class="kpi-lbl">Destinado à Saúde (mínimo legal: 15%)</div>
+                </div>
+            </div>
+
+            <!-- Módulos -->
+            <div class="card" style="margin-bottom: 20px;">
+                <div class="card-head">Explore os dados do município</div>
+                <div class="card-body">
+                    <div class="module-grid">
+                        <a href="tributos.html" class="module-card">
+                            <div class="mc-title">De onde vem o dinheiro?</div>
+                            <div class="mc-desc">ICMS, IPTU, ISSQN, FPM e outros tributos que formam a receita de Amparo.</div>
+                        </a>
+                        <a href="retorno.html" class="module-card">
+                            <div class="mc-title">Para onde vai o dinheiro?</div>
+                            <div class="mc-desc">Como a Prefeitura divide o orçamento entre Saúde, Educação, Obras e mais.</div>
+                        </a>
+                        <a href="calculadora.html" class="module-card">
+                            <div class="mc-title">Quanto eu pago de imposto?</div>
+                            <div class="mc-desc">Simule sua contribuição tributária anual por esfera de governo.</div>
+                        </a>
+                        <a href="circuito.html" class="module-card">
+                            <div class="mc-title">Amparo no contexto regional</div>
+                            <div class="mc-desc">Compare o orçamento de Amparo com cidades vizinhas do Circuito das Águas.</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>Esta é uma iniciativa independente.</strong> Os dados apresentados são baseados na Lei Orçamentária Anual (LOA 2026) aprovada pela Câmara Municipal de Amparo e em informações públicas disponíveis nos portais de transparência do TCESP. Para dados oficiais da gestão municipal, acesse o site da Prefeitura de Amparo.
+            </div>
+
         </div>
     </div>
 
-    <!-- Layout Principal -->
-    <main class="container main-layout">
-        <div class="main-content">
-
-            <!-- Card Destaque LOA -->
-            <div class="loa-highlight">
-                <div class="loa-label">Previsão Orçamentária Geral (Exercício <span class="exercicio-label">2026</span>)</div>
-                <div id="valor-total-loa" class="loa-value">R$ 0,00</div>
-                <div class="loa-desc">Fixada conforme Lei Orçamentária Anual aprovada pela Câmara Municipal de Amparo.</div>
-            </div>
-
-            <!-- Módulos Fiscais STN -->
-            <div class="gov-card">
-                <div class="card-title">Relatórios e Demonstrativos Oficiais</div>
-                <div class="card-body" style="padding: 0;">
-                    <table class="stn-table">
-                        <thead>
-                            <tr>
-                                <th>Relatório / Módulo</th>
-                                <th>Fundamentação Legal / Conteúdo</th>
-                                <th style="text-align: right;">Ação</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Receitas Tributárias</strong></td>
-                                <td>Cota-Parte ICMS, FPM, FUNDEB, IPTU, ISSQN, IPVA e ITBI.</td>
-                                <td style="text-align: right;"><a href="tributos.html" class="gov-btn" style="padding: 4px 8px; font-size: 11px;">Acessar</a></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Despesas por Função</strong></td>
-                                <td>Demonstrativo da despesa por funções de governo (Saúde, Educação, Urbanismo).</td>
-                                <td style="text-align: right;"><a href="retorno.html" class="gov-btn" style="padding: 4px 8px; font-size: 11px;">Acessar</a></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Consulta Tributária</strong></td>
-                                <td>Simulação técnica da estimativa de tributos municipais, estaduais e federais.</td>
-                                <td style="text-align: right;"><a href="calculadora.html" class="gov-btn" style="padding: 4px 8px; font-size: 11px;">Acessar</a></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Dados Regionais</strong></td>
-                                <td>Comparativo orçamentário do Circuito das Águas Paulistas.</td>
-                                <td style="text-align: right;"><a href="circuito.html" class="gov-btn" style="padding: 4px 8px; font-size: 11px;">Acessar</a></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Legislação e LAI</strong></td>
-                                <td>Leis Orçamentárias (LOA, LDO, PPA) e Atendimento e-SIC.</td>
-                                <td style="text-align: right;"><a href="transparencia.html" class="gov-btn" style="padding: 4px 8px; font-size: 11px;">Acessar</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Sidebar -->
-        <aside class="sidebar-content">
-            <div class="side-box">
-                <div class="side-head">Dados do Município</div>
-                <div class="side-body">
-                    <ul class="side-list">
-                        <li class="side-item"><span>População estimada:</span> <strong>68.000 hab.</strong></li>
-                        <li class="side-item"><span>Receita Per Capita:</span> <strong id="valor-per-capita">R$ 0,00</strong></li>
-                        <li class="side-item"><span>UF / Região:</span> <strong>SP / Campinas</strong></li>
-                        <li class="side-item"><span>Comarca:</span> <strong>Amparo / SP</strong></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="side-box">
-                <div class="side-head">Atendimento Presencial</div>
-                <div class="side-body">
-                    <p><strong>Prefeitura Municipal de Amparo</strong></p>
-                    <p style="color: var(--text-muted); font-size: 11px; margin-top: 4px;">Av. Bernardino de Campos, nº 705 - Centro, Amparo - SP, CEP 13900-400</p>
-                    <p style="margin-top: 8px;">Telefone: (19) 3817-9200</p>
-                </div>
-            </div>
-        </aside>
-    </main>
-
-    <!-- Rodapé Oficial -->
-    <footer class="gov-footer">
+    <!-- Rodapé -->
+    <footer class="site-footer">
         <div class="container">
-            <div class="footer-flex">
+            <div class="footer-inner">
                 <div>
-                    <h3 style="color: #ffffff; font-size: 14px; font-weight: 700;">Prefeitura Municipal da Estância Hidromineral de Amparo</h3>
-                    <p style="font-size: 11px; color: #94a3b8; margin-top: 2px;">Portal Oficial de Transparência Fiscal e Prestação de Contas</p>
+                    <div class="footer-brand">Impostômetro de Amparo</div>
+                    <div class="footer-note">Iniciativa de um morador. Dados de domínio público.</div>
                 </div>
                 <ul class="footer-nav">
-                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html">Impostômetro</a></li>
                     <li><a href="tributos.html">Receitas</a></li>
                     <li><a href="retorno.html">Despesas</a></li>
-                    <li><a href="calculadora.html">Consulta</a></li>
+                    <li><a href="calculadora.html">Calculadora</a></li>
                     <li><a href="transparencia.html">Legislação</a></li>
                 </ul>
             </div>
-            <div style="text-align: center; font-size: 11px; color: #94a3b8;">
-                <p>&copy; 2026 Município de Amparo - Estado de São Paulo. Todos os direitos reservados.</p>
+            <div class="footer-bottom">
+                Produzido por um morador de Amparo &middot; Dados: LOA 2026, TCESP, IBGE &middot; Não é site oficial da Prefeitura.
             </div>
         </div>
     </footer>

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Receitas Tributárias — Portal da Transparência de Amparo / SP</title>
-    <meta name="description" content="Demonstrativo das receitas tributárias e transferências constitucionais do Município de Amparo/SP.">
+    <title>De onde vem o dinheiro? — Impostômetro de Amparo</title>
+    <meta name="description" content="Composição das receitas tributárias e transferências que formam o orçamento do Município de Amparo/SP.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -13,169 +13,162 @@
 </head>
 <body>
 
-    <!-- Topbar Institucional -->
-    <div class="gov-header-top">
-        <div class="container top-flex">
-            <div class="top-left">PREFEITURA MUNICIPAL DE AMPARO — ESTADO DE SÃO PAULO</div>
-            <div class="top-right">Data de Atualização: <strong id="data-atualizacao">--/--/----</strong></div>
-        </div>
+    <div class="citizen-strip">
+        Iniciativa independente de um morador de Amparo. Não é site oficial da Prefeitura.
     </div>
 
-    <!-- Cabeçalho Principal -->
-    <header class="gov-header-main">
-        <div class="container header-flex">
-            <div class="header-brand">
-                <a href="index.html">
-                    <div class="brand-seal">PMA</div>
-                    <div class="brand-info">
-                        <h1>PORTAL DA TRANSPARÊNCIA</h1>
-                        <p>Prefeitura Municipal da Estância Hidromineral de Amparo</p>
-                    </div>
-                </a>
-            </div>
-            <div class="header-actions">
-                <label for="select-exercicio" style="font-size: 11px; font-weight: 700; color: var(--text-muted);">EXERCÍCIO FISCAL:</label>
-                <select id="select-exercicio" class="gov-select">
-                    <option value="2026" selected>2026 (Lei nº 4.321)</option>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="site-brand">
+                <h1>Impostômetro de Amparo</h1>
+                <div class="city-tag">Amparo &middot; Estância Hidromineral &middot; Estado de São Paulo</div>
+            </a>
+            <div class="header-meta">
+                Exercício:&nbsp;
+                <select id="select-exercicio" class="gov-select" style="font-family: inherit; font-size: 12px;">
+                    <option value="2026" selected>2026 (LOA)</option>
                     <option value="2025">2025 (Consolidado)</option>
                     <option value="2024">2024 (Consolidado)</option>
                 </select>
-                <button class="gov-btn" onclick="window.print()">Imprimir Página</button>
             </div>
         </div>
     </header>
 
-    <!-- Navegação Oficial -->
-    <nav class="gov-navbar">
+    <nav class="site-nav">
         <div class="container">
-            <ul class="nav-menu">
-                <li><a href="index.html">Início</a></li>
-                <li><a href="tributos.html" class="active">Receitas Tributárias</a></li>
-                <li><a href="retorno.html">Despesas por Função</a></li>
-                <li><a href="calculadora.html">Consulta Tributária</a></li>
-                <li><a href="circuito.html">Dados Regionais</a></li>
+            <ul class="nav-list">
+                <li><a href="index.html">Impostômetro</a></li>
+                <li><a href="tributos.html" class="active">De onde vem o dinheiro?</a></li>
+                <li><a href="retorno.html">Para onde vai?</a></li>
+                <li><a href="calculadora.html">Quanto eu pago?</a></li>
+                <li><a href="circuito.html">Comparativo Regional</a></li>
                 <li><a href="transparencia.html">Legislação e LAI</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Banner da Seção -->
-    <div class="section-banner">
+    <div class="page-banner">
         <div class="container">
-            <h2>Demonstrativo das Receitas Tributárias</h2>
-            <p>Composição da arrecadação própria municipal e transferências constitucionais (Exercício <span class="exercicio-label">2026</span>).</p>
+            <div class="breadcrumb"><a href="index.html">Início</a> &rsaquo; De onde vem o dinheiro?</div>
+            <h2>De onde vem a receita de Amparo?</h2>
+            <p>O município arrecada recursos de três fontes: impostos próprios, repasses do Estado e transferências da União — entenda cada uma.</p>
         </div>
     </div>
 
-    <!-- Layout Principal -->
-    <main class="container main-layout">
-        <div class="main-content">
-
-            <div class="gov-card">
-                <div class="card-title">Detalhamento das Fontes de Receita</div>
-                <div class="card-body" style="padding: 0;">
-                    <table class="stn-table">
+    <div class="page-body">
+        <div class="container two-col">
+            <div>
+                <div class="card">
+                    <div class="card-head">Composição da Receita — Exercício <span class="js-exercicio">2026</span></div>
+                    <table class="data-table">
                         <thead>
                             <tr>
-                                <th>Categoria Tributária</th>
-                                <th>Esfera</th>
-                                <th>Especificação Legal</th>
-                                <th class="num-align">Participação</th>
-                                <th class="num-align">Previsão Orçamentária</th>
+                                <th>Fonte de Recurso</th>
+                                <th>Origem</th>
+                                <th>O que é</th>
+                                <th class="num">Participação</th>
+                                <th class="num">Previsão LOA</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><strong>Cota-Parte do ICMS</strong></td>
-                                <td><span class="tag-esfera est">Estadual</span></td>
-                                <td>Repasse estadual constitucional sobre circulação de mercadorias.</td>
-                                <td class="num-align">35,0%</td>
-                                <td class="num-align" id="tbl-receita-icms">R$ 0,00</td>
+                                <td><strong>Cota-Parte ICMS</strong></td>
+                                <td><span class="badge badge-est">Estadual</span></td>
+                                <td>25% do ICMS arrecadado em SP é dividido entre os municípios.</td>
+                                <td class="num">35,0%</td>
+                                <td class="num" id="tbl-icms">R$ 0,00</td>
                             </tr>
                             <tr>
                                 <td><strong>FPM e FUNDEB</strong></td>
-                                <td><span class="tag-esfera fed">Federal</span></td>
-                                <td>Fundo de Participação dos Municípios e Fundo da Educação Básica.</td>
-                                <td class="num-align">28,0%</td>
-                                <td class="num-align" id="tbl-receita-fpm">R$ 0,00</td>
+                                <td><span class="badge badge-fed">Federal</span></td>
+                                <td>Repasses da União para municípios e fundo da educação básica.</td>
+                                <td class="num">28,0%</td>
+                                <td class="num" id="tbl-fpm">R$ 0,00</td>
                             </tr>
                             <tr>
                                 <td><strong>IPTU</strong></td>
-                                <td><span class="tag-esfera mun">Municipal</span></td>
-                                <td>Imposto Predial e Territorial Urbano arrecadado no município.</td>
-                                <td class="num-align">14,0%</td>
-                                <td class="num-align" id="tbl-receita-iptu">R$ 0,00</td>
+                                <td><span class="badge badge-mun">Municipal</span></td>
+                                <td>Imposto sobre imóveis urbanos, cobrado anualmente pela prefeitura.</td>
+                                <td class="num">14,0%</td>
+                                <td class="num" id="tbl-iptu">R$ 0,00</td>
                             </tr>
                             <tr>
                                 <td><strong>ISSQN</strong></td>
-                                <td><span class="tag-esfera mun">Municipal</span></td>
-                                <td>Imposto Sobre Serviços de Qualquer Natureza.</td>
-                                <td class="num-align">12,0%</td>
-                                <td class="num-align" id="tbl-receita-iss">R$ 0,00</td>
+                                <td><span class="badge badge-mun">Municipal</span></td>
+                                <td>Imposto sobre serviços prestados por empresas e profissionais no município.</td>
+                                <td class="num">12,0%</td>
+                                <td class="num" id="tbl-iss">R$ 0,00</td>
                             </tr>
                             <tr>
-                                <td><strong>Cota-Parte do IPVA</strong></td>
-                                <td><span class="tag-esfera est">Estadual</span></td>
-                                <td>Cota-parte de 50% repassada pelo Estado de São Paulo.</td>
-                                <td class="num-align">7,0%</td>
-                                <td class="num-align" id="tbl-receita-ipva">R$ 0,00</td>
+                                <td><strong>Cota-Parte IPVA</strong></td>
+                                <td><span class="badge badge-est">Estadual</span></td>
+                                <td>50% do IPVA dos veículos licenciados em Amparo ficam no município.</td>
+                                <td class="num">7,0%</td>
+                                <td class="num" id="tbl-ipva">R$ 0,00</td>
                             </tr>
                             <tr>
                                 <td><strong>ITBI e Taxas</strong></td>
-                                <td><span class="tag-esfera mun">Municipal</span></td>
-                                <td>Transmissão de Bens Imóveis e taxas de licença e serviços.</td>
-                                <td class="num-align">4,0%</td>
-                                <td class="num-align" id="tbl-receita-itbi">R$ 0,00</td>
+                                <td><span class="badge badge-mun">Municipal</span></td>
+                                <td>Imposto na compra de imóveis e taxas de licenças e serviços.</td>
+                                <td class="num">4,0%</td>
+                                <td class="num" id="tbl-itbi">R$ 0,00</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-            </div>
 
-            <div class="gov-card">
-                <div class="card-title">Gráfico da Composição Relativa de Receitas</div>
-                <div class="card-body">
-                    <div class="chart-container">
-                        <canvas id="chartReceitasCanvas"></canvas>
+                <div class="card">
+                    <div class="card-head">Distribuição Visual</div>
+                    <div class="card-body">
+                        <div class="chart-wrap">
+                            <canvas id="chart-receitas"></canvas>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
-
-        <aside class="sidebar-content">
-            <div class="side-box">
-                <div class="side-head">Origem por Esfera</div>
-                <div class="side-body">
-                    <ul class="side-list">
-                        <li class="side-item"><span>Transferências Estaduais:</span> <strong>42,0%</strong></li>
-                        <li class="side-item"><span>Transferências Federais:</span> <strong>28,0%</strong></li>
-                        <li class="side-item"><span>Arrecadação Própria:</span> <strong>30,0%</strong></li>
-                    </ul>
+                <div class="info-box">
+                    <strong>Por que Amparo depende tanto do ICMS?</strong><br>
+                    Municípios menores têm base econômica e de serviços mais restrita, o que limita a arrecadação própria. Por isso, a cota-parte do ICMS — determinada pelo movimento econômico estadual e por critérios de valor adicionado — é historicamente a maior fonte de receita da maioria das prefeituras paulistas.
                 </div>
             </div>
-        </aside>
-    </main>
 
-    <!-- Rodapé Oficial -->
-    <footer class="gov-footer">
+            <aside>
+                <div class="side-card">
+                    <div class="side-head">Por Esfera de Governo</div>
+                    <div class="side-body">
+                        <ul class="side-list">
+                            <li class="side-row"><span>Repasses Estaduais</span><strong>42,0%</strong></li>
+                            <li class="side-row"><span>Repasses Federais</span><strong>28,0%</strong></li>
+                            <li class="side-row"><span>Arrecadação Própria</span><strong>30,0%</strong></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="side-card">
+                    <div class="side-head">Base Legal</div>
+                    <div class="side-body">
+                        <p>A distribuição de tributos entre União, Estados e Municípios é definida pela Constituição Federal de 1988, artigos 155 a 162.</p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <footer class="site-footer">
         <div class="container">
-            <div class="footer-flex">
+            <div class="footer-inner">
                 <div>
-                    <h3 style="color: #ffffff; font-size: 14px; font-weight: 700;">Prefeitura Municipal da Estância Hidromineral de Amparo</h3>
-                    <p style="font-size: 11px; color: #94a3b8; margin-top: 2px;">Portal Oficial de Transparência Fiscal e Prestação de Contas</p>
+                    <div class="footer-brand">Impostômetro de Amparo</div>
+                    <div class="footer-note">Iniciativa de um morador. Dados de domínio público.</div>
                 </div>
                 <ul class="footer-nav">
-                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html">Impostômetro</a></li>
                     <li><a href="tributos.html">Receitas</a></li>
                     <li><a href="retorno.html">Despesas</a></li>
-                    <li><a href="calculadora.html">Consulta</a></li>
+                    <li><a href="calculadora.html">Calculadora</a></li>
                     <li><a href="transparencia.html">Legislação</a></li>
                 </ul>
             </div>
-            <div style="text-align: center; font-size: 11px; color: #94a3b8;">
-                <p>&copy; 2026 Município de Amparo - Estado de São Paulo. Todos os direitos reservados.</p>
-            </div>
+            <div class="footer-bottom">Produzido por um morador de Amparo &middot; Não é site oficial da Prefeitura.</div>
         </div>
     </footer>
 
