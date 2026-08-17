@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comparativo Regional — Impostômetro de Amparo</title>
-    <meta name="description" content="Comparação dos orçamentos municipais e receita per capita dos municípios do Circuito das Águas Paulistas.">
+    <title>Amparo vs. Região — Impostômetro de Amparo</title>
+    <meta name="description" content="Comparativo de orçamentos municipais entre Amparo e cidades vizinhas do Circuito das Águas Paulistas.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -12,17 +12,15 @@
 </head>
 <body>
 
-    <div class="citizen-strip">
-        Iniciativa independente de um morador de Amparo. Não é site oficial da Prefeitura.
-    </div>
+    <div class="notice-bar">Projeto independente de um morador de Amparo — não é site oficial da Prefeitura.</div>
 
     <header class="site-header">
-        <div class="container header-inner">
-            <a href="index.html" class="site-brand">
-                <h1>Impostômetro de Amparo</h1>
-                <div class="city-tag">Amparo &middot; Estância Hidromineral &middot; Estado de São Paulo</div>
+        <div class="container header-row">
+            <a href="index.html" class="brand">
+                <div class="brand-name">Impostômetro de Amparo</div>
+                <div class="brand-sub">Amparo · Estância Hidromineral · SP</div>
             </a>
-            <div class="header-meta">Atualizado em: <strong class="js-data-hoje">--/--/----</strong></div>
+            <div class="header-date"><span class="js-data-hoje">--/--/----</span></div>
         </div>
     </header>
 
@@ -30,105 +28,102 @@
         <div class="container">
             <ul class="nav-list">
                 <li><a href="index.html">Impostômetro</a></li>
-                <li><a href="tributos.html">De onde vem o dinheiro?</a></li>
+                <li><a href="tributos.html">De onde vem?</a></li>
                 <li><a href="retorno.html">Para onde vai?</a></li>
                 <li><a href="calculadora.html">Quanto eu pago?</a></li>
-                <li><a href="circuito.html" class="active">Comparativo Regional</a></li>
-                <li><a href="transparencia.html">Legislação e LAI</a></li>
+                <li><a href="circuito.html" class="active">Região</a></li>
+                <li><a href="transparencia.html">Legislação</a></li>
             </ul>
         </div>
     </nav>
 
-    <div class="page-banner">
-        <div class="container">
-            <div class="breadcrumb"><a href="index.html">Início</a> &rsaquo; Comparativo Regional</div>
-            <h2>Amparo no contexto regional</h2>
-            <p>Como o orçamento de Amparo se compara com os municípios vizinhos do Circuito das Águas Paulistas?</p>
+    <div class="container pb">
+        <div class="page-head">
+            <div class="crumb"><a href="index.html">Início</a> › Comparativo Regional</div>
+            <h2>Amparo comparado às cidades vizinhas</h2>
+            <p>Circuito das Águas Paulistas — orçamentos municipais e receita por habitante.</p>
         </div>
-    </div>
 
-    <div class="page-body">
-        <div class="container two-col">
+        <div class="layout">
             <div>
-                <div class="card">
-                    <div class="card-head">Orçamentos Municipais — Exercício 2026 (Estimativas LOA)</div>
-                    <table class="data-table">
+                <div class="section">
+                    <div class="section-title">LOA 2026 — estimativas por município</div>
+                    <table class="tbl">
                         <thead>
                             <tr>
                                 <th>Município</th>
-                                <th>População (IBGE)</th>
-                                <th class="num">LOA Prevista</th>
-                                <th class="num">Per Capita / Ano</th>
+                                <th>População</th>
+                                <th class="num">Orçamento (LOA)</th>
+                                <th class="num">Per Capita</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr style="background: #dbeafe;">
-                                <td><strong>Amparo (sede da comarca)</strong></td>
-                                <td>68.000 hab.</td>
-                                <td class="num">R$ 295.000.000,00</td>
-                                <td class="num">R$ 4.338,23</td>
+                            <tr class="highlight">
+                                <td><strong>Amparo</strong> <span style="font-weight:400;color:var(--ink-3);font-size:11px;">(sede da comarca)</span></td>
+                                <td>68.000</td>
+                                <td class="num">R$ 295.000.000</td>
+                                <td class="num">R$ 4.338</td>
                             </tr>
                             <tr>
                                 <td>Jaguariúna</td>
-                                <td>59.000 hab.</td>
-                                <td class="num">R$ 480.000.000,00</td>
-                                <td class="num">R$ 8.135,59</td>
+                                <td>59.000</td>
+                                <td class="num">R$ 480.000.000</td>
+                                <td class="num">R$ 8.135</td>
                             </tr>
                             <tr>
                                 <td>Itapira</td>
-                                <td>75.000 hab.</td>
-                                <td class="num">R$ 380.000.000,00</td>
-                                <td class="num">R$ 5.066,66</td>
+                                <td>75.000</td>
+                                <td class="num">R$ 380.000.000</td>
+                                <td class="num">R$ 5.066</td>
                             </tr>
                             <tr>
                                 <td>Pedreira</td>
-                                <td>48.000 hab.</td>
-                                <td class="num">R$ 190.000.000,00</td>
-                                <td class="num">R$ 3.958,33</td>
+                                <td>48.000</td>
+                                <td class="num">R$ 190.000.000</td>
+                                <td class="num">R$ 3.958</td>
                             </tr>
                             <tr>
                                 <td>Serra Negra</td>
-                                <td>29.000 hab.</td>
-                                <td class="num">R$ 165.000.000,00</td>
-                                <td class="num">R$ 5.689,65</td>
+                                <td>29.000</td>
+                                <td class="num">R$ 165.000.000</td>
+                                <td class="num">R$ 5.689</td>
                             </tr>
                             <tr>
                                 <td>Socorro</td>
-                                <td>41.000 hab.</td>
-                                <td class="num">R$ 185.000.000,00</td>
-                                <td class="num">R$ 4.512,19</td>
+                                <td>41.000</td>
+                                <td class="num">R$ 185.000.000</td>
+                                <td class="num">R$ 4.512</td>
                             </tr>
                             <tr>
                                 <td>Águas de Lindoia</td>
-                                <td>19.000 hab.</td>
-                                <td class="num">R$ 115.000.000,00</td>
-                                <td class="num">R$ 6.052,63</td>
+                                <td>19.000</td>
+                                <td class="num">R$ 115.000.000</td>
+                                <td class="num">R$ 6.052</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <div class="info-box" style="margin-top: 0;">
-                    <strong>Por que Jaguariúna tem orçamento tão maior?</strong><br>
-                    Jaguariúna concentra um importante polo industrial-tecnológico, o que gera expressiva arrecadação própria de ISSQN e IPTU. A composição econômica do município impacta diretamente o tamanho do orçamento per capita.
+                <div class="note">
+                    Jaguariúna tem orçamento per capita quase o dobro de Amparo por conta de sua base industrial e tecnológica, que gera maior arrecadação própria de ISS e IPTU.
                 </div>
             </div>
 
             <aside>
-                <div class="side-card">
-                    <div class="side-head">Dados de Amparo</div>
-                    <div class="side-body">
-                        <ul class="side-list">
-                            <li class="side-row"><span>Comarca</span><strong>Amparo / SP</strong></li>
-                            <li class="side-row"><span>Região Adm.</span><strong>Campinas</strong></li>
-                            <li class="side-row"><span>Consórcio</span><strong>Concircuito</strong></li>
+                <div class="aside-section">
+                    <div class="aside-title">Amparo na região</div>
+                    <div class="aside-body">
+                        <ul class="kv-list">
+                            <li class="kv"><span class="kv-key">Comarca</span><span class="kv-value">Amparo / SP</span></li>
+                            <li class="kv"><span class="kv-key">Região Adm.</span><span class="kv-value">Campinas</span></li>
+                            <li class="kv"><span class="kv-key">Consórcio</span><span class="kv-value">Concircuito</span></li>
                         </ul>
                     </div>
                 </div>
-                <div class="side-card">
-                    <div class="side-head">Fonte dos dados</div>
-                    <div class="side-body">
-                        <p>Portais de transparência dos municípios, TCESP e estimativas IBGE 2024. Os orçamentos são previsões das LOAs 2026 e podem ser revistos ao longo do exercício.</p>
+                <div class="aside-section">
+                    <div class="aside-title">Fonte</div>
+                    <div class="aside-body">
+                        <p style="font-size: 12px; line-height: 1.55; color: var(--ink-2);">Portais de transparência municipais, TCESP e estimativas populacionais IBGE 2024.</p>
                     </div>
                 </div>
             </aside>
@@ -137,20 +132,20 @@
 
     <footer class="site-footer">
         <div class="container">
-            <div class="footer-inner">
+            <div class="footer-row">
                 <div>
-                    <div class="footer-brand">Impostômetro de Amparo</div>
-                    <div class="footer-note">Iniciativa de um morador. Dados de domínio público.</div>
+                    <div class="footer-name">Impostômetro de Amparo</div>
+                    <div class="footer-note">Projeto de um morador. Não é site oficial da Prefeitura.</div>
                 </div>
-                <ul class="footer-nav">
-                    <li><a href="index.html">Impostômetro</a></li>
+                <ul class="f-nav">
+                    <li><a href="index.html">Início</a></li>
                     <li><a href="tributos.html">Receitas</a></li>
                     <li><a href="retorno.html">Despesas</a></li>
                     <li><a href="calculadora.html">Calculadora</a></li>
                     <li><a href="transparencia.html">Legislação</a></li>
                 </ul>
             </div>
-            <div class="footer-bottom">Produzido por um morador de Amparo &middot; Não é site oficial da Prefeitura.</div>
+            <div class="footer-copy">Dados: LOA 2026, TCESP, IBGE · Amparo, SP</div>
         </div>
     </footer>
 
