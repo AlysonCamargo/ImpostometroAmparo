@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulação de Contribuição — Portal da Transparência de Amparo / SP</title>
-    <meta name="description" content="Simulação estimativa da carga tributária incidente sobre a renda, consumo e patrimônio no Município de Amparo/SP.">
+    <title>Consulta Tributária — Portal da Transparência de Amparo / SP</title>
+    <meta name="description" content="Simulador de estimativa de tributos diretos e indiretos incidentes sobre a renda e o consumo no Município de Amparo/SP.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -12,170 +12,164 @@
 </head>
 <body>
 
-    <!-- Barra Institucional Superior -->
-    <div class="gov-topbar">
-        <div class="container topbar-flex">
-            <div class="topbar-left">
-                <span class="topbar-tag">MUNICÍPIO DE AMPARO</span>
-                <span>ESTÂNCIA HIDROMINERAL — ESTADO DE SÃO PAULO</span>
-            </div>
-            <div class="topbar-right">
-                <span>CONSOLIDAÇÃO ORÇAMENTÁRIA: <strong id="live-date">--/--/----</strong></span>
-            </div>
+    <!-- Topbar Institucional -->
+    <div class="gov-header-top">
+        <div class="container top-flex">
+            <div class="top-left">PREFEITURA MUNICIPAL DE AMPARO — ESTADO DE SÃO PAULO</div>
+            <div class="top-right">Data de Atualização: <strong id="data-atualizacao">--/--/----</strong></div>
         </div>
     </div>
 
     <!-- Cabeçalho Principal -->
-    <header class="portal-header">
-        <div class="container header-layout">
-            <div class="brand-section">
+    <header class="gov-header-main">
+        <div class="container header-flex">
+            <div class="header-brand">
                 <a href="index.html">
-                    <div class="brand-coat-of-arms">PMA</div>
-                    <div class="brand-text">
+                    <div class="brand-seal">PMA</div>
+                    <div class="brand-info">
                         <h1>PORTAL DA TRANSPARÊNCIA</h1>
-                        <div class="tagline">Prefeitura Municipal da Estância Hidromineral de Amparo</div>
+                        <p>Prefeitura Municipal da Estância Hidromineral de Amparo</p>
                     </div>
                 </a>
             </div>
-            <div class="header-controls">
-                <span class="year-select-label">Exercício Fiscal:</span>
-                <select id="year-select" class="gov-select">
+            <div class="header-actions">
+                <label for="select-exercicio" style="font-size: 11px; font-weight: 700; color: var(--text-muted);">EXERCÍCIO FISCAL:</label>
+                <select id="select-exercicio" class="gov-select">
                     <option value="2026" selected>2026 (Lei nº 4.321)</option>
                     <option value="2025">2025 (Consolidado)</option>
                     <option value="2024">2024 (Consolidado)</option>
                 </select>
-                <button class="btn-gov" onclick="window.print()">Imprimir Demonstrativo</button>
+                <button class="gov-btn" onclick="window.print()">Imprimir Página</button>
             </div>
         </div>
     </header>
 
-    <!-- Navegação Institucional -->
-    <nav class="portal-nav">
+    <!-- Navegação Oficial -->
+    <nav class="gov-navbar">
         <div class="container">
-            <ul class="nav-links">
+            <ul class="nav-menu">
                 <li><a href="index.html">Início</a></li>
                 <li><a href="tributos.html">Receitas Tributárias</a></li>
-                <li><a href="retorno.html">Aplicação de Recursos</a></li>
-                <li><a href="calculadora.html" class="active">Simulação de Contribuição</a></li>
+                <li><a href="retorno.html">Despesas por Função</a></li>
+                <li><a href="calculadora.html" class="active">Consulta Tributária</a></li>
                 <li><a href="circuito.html">Dados Regionais</a></li>
-                <li><a href="transparencia.html">Legislação e Direitos</a></li>
+                <li><a href="transparencia.html">Legislação e LAI</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Banner Oficial da Página -->
-    <div class="page-banner">
+    <!-- Banner da Seção -->
+    <div class="section-banner">
         <div class="container">
-            <div class="breadcrumb"><a href="index.html">Início</a> &rsaquo; Simulação de Contribuição</div>
-            <h2>Simulação de Estimativa Tributária Individual</h2>
-            <p>Ferramenta técnica para estimativa do volume tributário direto e indireto incidente sobre a renda, consumo familiar e patrimônio imobiliário/automotivo.</p>
+            <h2>Simulação de Estimativa Tributária</h2>
+            <p>Ferramenta técnica para estimativa do volume tributário direto e indireto por esfera de competência (Exercício <span class="exercicio-label">2026</span>).</p>
         </div>
     </div>
 
-    <!-- Corpo Principal -->
-    <main class="editorial-body">
-        <div class="container portal-grid">
+    <!-- Layout Principal -->
+    <main class="container main-layout">
+        <div class="main-content">
 
-            <div class="main-column">
-
-                <div class="gov-box">
-                    <div class="box-header">
-                        <h2>Formulário de Cálculo Tributário Estimado</h2>
-                        <span class="box-subtitle">Insira os valores médios de referência para emissão do demonstrativo</span>
-                    </div>
-                    <div class="box-content">
-                        
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="calc-salary">Renda Mensal Bruta (R$)</label>
-                                <input type="number" id="calc-salary" value="4500" min="0" step="100">
-                            </div>
-                            <div class="form-group">
-                                <label for="calc-expenses">Despesas Mensais com Consumo (R$)</label>
-                                <input type="number" id="calc-expenses" value="2800" min="0" step="100">
-                            </div>
-                            <div class="form-group">
-                                <label for="calc-iptu">Valor Anual do IPTU no Município de Amparo (R$)</label>
-                                <input type="number" id="calc-iptu" value="1200" min="0" step="50">
-                            </div>
-                            <div class="form-group">
-                                <label for="calc-ipva">Valor Anual do IPVA do Veículo (R$)</label>
-                                <input type="number" id="calc-ipva" value="1500" min="0" step="50">
-                            </div>
+            <div class="gov-card">
+                <div class="card-title">Parâmetros para Consulta</div>
+                <div class="card-body">
+                    
+                    <div class="form-row">
+                        <div class="field">
+                            <label for="input-renda">Renda Mensal Bruta (R$)</label>
+                            <input type="number" id="input-renda" value="4500" min="0" step="100">
                         </div>
-
-                        <button id="btn-calculate" class="btn-calc">Gerar Demonstrativo de Estimativa Fiscal</button>
-
-                        <div style="margin-top: 24px;">
-                            <div class="gov-report-box">
-                                <div class="report-header">
-                                    <h4>DEMONSTRATIVO ESTIMADO DE ARRECADAÇÃO TRIBUTÁRIA ANUAL</h4>
-                                    <span style="font-size: 11px; color: var(--text-muted);">Relatório gerado com base nas alíquotas legais vigentes</span>
-                                </div>
-                                <div class="report-row">
-                                    <span>Tributos Municipais (Amparo - IPTU / ISS / Taxas):</span>
-                                    <strong id="res-municipal-val" style="color: var(--gov-blue-dark);">R$ 0,00</strong>
-                                </div>
-                                <div class="report-row">
-                                    <span>Tributos Estaduais (São Paulo - ICMS / IPVA):</span>
-                                    <strong id="res-estadual-val" style="color: #92400e;">R$ 0,00</strong>
-                                </div>
-                                <div class="report-row">
-                                    <span>Tributos Federais (União - IRPF / PIS / COFINS):</span>
-                                    <strong id="res-federal-val" style="color: #166534;">R$ 0,00</strong>
-                                </div>
-                                <div class="report-total report-row">
-                                    <span>ESTIMATIVA TOTAL PAGA NO EXERCÍCIO:</span>
-                                    <span id="res-total-tax">R$ 0,00</span>
-                                </div>
-                                <div style="font-size: 12px; margin-top: 14px; text-align: center; color: var(--text-sub); border-top: 1px solid var(--border-light); padding-top: 10px;">
-                                    Equivalência estimada: <strong><span id="res-work-days">0</span> dias</strong> de trabalho dedicados ao cumprimento das obrigações fiscais no ano.
-                                </div>
-                            </div>
+                        <div class="field">
+                            <label for="input-consumo">Despesa Mensal Estimada com Consumo (R$)</label>
+                            <input type="number" id="input-consumo" value="2800" min="0" step="100">
                         </div>
                     </div>
-                </div>
 
-                <div class="gov-box">
-                    <div class="box-header">
-                        <h2>Isenção Tributária do IPTU em Amparo</h2>
-                        <span class="box-subtitle">Previsão no Código Tributário Municipal (Lei nº 1.890)</span>
+                    <div class="form-row">
+                        <div class="field">
+                            <label for="input-iptu">IPTU Anual em Amparo (R$)</label>
+                            <input type="number" id="input-iptu" value="1200" min="0" step="50">
+                        </div>
+                        <div class="field">
+                            <label for="input-ipva">IPVA Anual do Veículo (R$)</label>
+                            <input type="number" id="input-ipva" value="1500" min="0" step="50">
+                        </div>
                     </div>
-                    <div class="box-content">
-                        <p style="font-size: 13px; line-height: 1.6; color: var(--text-sub);">
-                            A legislação do Município de Amparo prevê a concessão de isenção integral do IPTU para aposentados, pensionistas e beneficiários do Benefício de Prestação Continuada (BPC) proprietários de um único imóvel residencial no município, desde que a renda familiar total não ultrapasse o equivalente a 2 salários mínimos vigentes.
-                        </p>
-                    </div>
-                </div>
 
+                    <button id="btn-calcular-tributos" class="gov-btn" style="width: 100%; margin-top: 8px; padding: 10px;">Gerar Demonstrativo de Estimativa Fiscal</button>
+
+                    <div style="margin-top: 20px;">
+                        <table class="stn-table">
+                            <thead>
+                                <tr>
+                                    <th>Esfera Fiscal</th>
+                                    <th>Tributos Inclusos</th>
+                                    <th class="num-align">Estimativa Anual</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Esfera Municipal (Amparo)</strong></td>
+                                    <td>IPTU + Cota-Parte do ISS/Taxas</td>
+                                    <td class="num-align" id="res-municipal">R$ 0,00</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Esfera Estadual (São Paulo)</strong></td>
+                                    <td>IPVA + Cota-Parte do ICMS</td>
+                                    <td class="num-align" id="res-estadual">R$ 0,00</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Esfera Federal (União)</strong></td>
+                                    <td>IRPF + PIS / COFINS</td>
+                                    <td class="num-align" id="res-federal">R$ 0,00</td>
+                                </tr>
+                                <tr style="background: #e2e8f0; font-weight: 700;">
+                                    <td colspan="2"><strong>ESTIMATIVA TOTAL NO EXERCÍCIO</strong></td>
+                                    <td class="num-align" id="res-total-geral">R$ 0,00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
             </div>
 
-            <!-- Sidebar -->
-            <aside class="sidebar-column">
-                <div class="sidebar-box">
-                    <div class="sidebar-title">Carga Tributária Nacional</div>
-                    <div class="sidebar-body" style="font-size: 12px; color: var(--text-sub); line-height: 1.5;">
-                        <p>Segundo levantamentos do Instituto Brasileiro de Planejamento e Tributação (IBPT), a carga tributária média consolidada no Brasil responde por cerca de 32,4% do Produto Interno Bruto (PIB).</p>
-                    </div>
+            <div class="gov-card">
+                <div class="card-title">Isenção de IPTU em Amparo (Código Tributário Municipal)</div>
+                <div class="card-body">
+                    <p style="font-size: 12px; color: var(--text-muted); line-height: 1.6;">
+                        A Lei Municipal nº 1.890 e alterações posteriores asseguram a isenção integral do IPTU a aposentados, pensionistas e beneficiários do BPC proprietários de um único imóvel residencial no Município de Amparo, cuja renda familiar bruta seja de até 2 salários mínimos vigentes.
+                    </p>
                 </div>
-            </aside>
+            </div>
 
         </div>
+
+        <aside class="sidebar-content">
+            <div class="side-box">
+                <div class="side-head">Base de Cálculo</div>
+                <div class="side-body">
+                    <p style="font-size: 11px; color: var(--text-muted); line-height: 1.5;">
+                        Os cálculos observam a tabela progressiva do Imposto de Renda Pessoa Física (IRPF/RFB) e as alíquotas médias incidentes sobre o consumo de bens e serviços.
+                    </p>
+                </div>
+            </div>
+        </aside>
     </main>
 
     <!-- Rodapé Oficial -->
-    <footer class="portal-footer">
+    <footer class="gov-footer">
         <div class="container">
             <div class="footer-flex">
-                <div class="footer-brand">
-                    <h3>Prefeitura Municipal da Estância Hidromineral de Amparo</h3>
-                    <p>Portal Oficial de Transparência Fiscal e Prestação de Contas</p>
+                <div>
+                    <h3 style="color: #ffffff; font-size: 14px; font-weight: 700;">Prefeitura Municipal da Estância Hidromineral de Amparo</h3>
+                    <p style="font-size: 11px; color: #94a3b8; margin-top: 2px;">Portal Oficial de Transparência Fiscal e Prestação de Contas</p>
                 </div>
                 <ul class="footer-nav">
                     <li><a href="index.html">Início</a></li>
                     <li><a href="tributos.html">Receitas</a></li>
-                    <li><a href="retorno.html">Aplicação</a></li>
-                    <li><a href="calculadora.html">Simulação</a></li>
+                    <li><a href="retorno.html">Despesas</a></li>
+                    <li><a href="calculadora.html">Consulta</a></li>
                     <li><a href="transparencia.html">Legislação</a></li>
                 </ul>
             </div>

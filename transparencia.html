@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legislação e Direitos — Portal da Transparência de Amparo / SP</title>
-    <meta name="description" content="Base legal, leis orçamentárias (LOA, LDO, PPA), Lei de Acesso à Informação (e-SIC) do Município de Amparo/SP.">
+    <title>Legislação e LAI — Portal da Transparência de Amparo / SP</title>
+    <meta name="description" content="Base legal, leis orçamentárias (LOA, LDO, PPA) e Serviço de Informação ao Cidadão (e-SIC) do Município de Amparo/SP.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -12,166 +12,137 @@
 </head>
 <body>
 
-    <!-- Barra Institucional Superior -->
-    <div class="gov-topbar">
-        <div class="container topbar-flex">
-            <div class="topbar-left">
-                <span class="topbar-tag">MUNICÍPIO DE AMPARO</span>
-                <span>ESTÂNCIA HIDROMINERAL — ESTADO DE SÃO PAULO</span>
-            </div>
-            <div class="topbar-right">
-                <span>CONSOLIDAÇÃO ORÇAMENTÁRIA: <strong id="live-date">--/--/----</strong></span>
-            </div>
+    <!-- Topbar Institucional -->
+    <div class="gov-header-top">
+        <div class="container top-flex">
+            <div class="top-left">PREFEITURA MUNICIPAL DE AMPARO — ESTADO DE SÃO PAULO</div>
+            <div class="top-right">Data de Atualização: <strong id="data-atualizacao">--/--/----</strong></div>
         </div>
     </div>
 
     <!-- Cabeçalho Principal -->
-    <header class="portal-header">
-        <div class="container header-layout">
-            <div class="brand-section">
+    <header class="gov-header-main">
+        <div class="container header-flex">
+            <div class="header-brand">
                 <a href="index.html">
-                    <div class="brand-coat-of-arms">PMA</div>
-                    <div class="brand-text">
+                    <div class="brand-seal">PMA</div>
+                    <div class="brand-info">
                         <h1>PORTAL DA TRANSPARÊNCIA</h1>
-                        <div class="tagline">Prefeitura Municipal da Estância Hidromineral de Amparo</div>
+                        <p>Prefeitura Municipal da Estância Hidromineral de Amparo</p>
                     </div>
                 </a>
             </div>
-            <div class="header-controls">
-                <span class="year-select-label">Exercício Fiscal:</span>
-                <select id="year-select" class="gov-select">
+            <div class="header-actions">
+                <label for="select-exercicio" style="font-size: 11px; font-weight: 700; color: var(--text-muted);">EXERCÍCIO FISCAL:</label>
+                <select id="select-exercicio" class="gov-select">
                     <option value="2026" selected>2026 (Lei nº 4.321)</option>
                     <option value="2025">2025 (Consolidado)</option>
                     <option value="2024">2024 (Consolidado)</option>
                 </select>
-                <button class="btn-gov" onclick="window.print()">Imprimir Relatório</button>
+                <button class="gov-btn" onclick="window.print()">Imprimir Página</button>
             </div>
         </div>
     </header>
 
-    <!-- Navegação Institucional -->
-    <nav class="portal-nav">
+    <!-- Navegação Oficial -->
+    <nav class="gov-navbar">
         <div class="container">
-            <ul class="nav-links">
+            <ul class="nav-menu">
                 <li><a href="index.html">Início</a></li>
                 <li><a href="tributos.html">Receitas Tributárias</a></li>
-                <li><a href="retorno.html">Aplicação de Recursos</a></li>
-                <li><a href="calculadora.html">Simulação de Contribuição</a></li>
+                <li><a href="retorno.html">Despesas por Função</a></li>
+                <li><a href="calculadora.html">Consulta Tributária</a></li>
                 <li><a href="circuito.html">Dados Regionais</a></li>
-                <li><a href="transparencia.html" class="active">Legislação e Direitos</a></li>
+                <li><a href="transparencia.html" class="active">Legislação e LAI</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Banner Oficial da Página -->
-    <div class="page-banner">
+    <!-- Banner da Seção -->
+    <div class="section-banner">
         <div class="container">
-            <div class="breadcrumb"><a href="index.html">Início</a> &rsaquo; Legislação e Direitos</div>
-            <h2>Base Legal e Instrumentos Orçamentários</h2>
-            <p>Acesso à legislação orçamentária municipal (LOA, LDO, PPA) e orientações sobre a Lei de Acesso à Informação (Lei Federal nº 12.527/2011).</p>
+            <h2>Base Legal e Acesso à Informação</h2>
+            <p>Legislação orçamentária municipal e regulamentação da Lei de Acesso à Informação (Lei Federal nº 12.527/2011).</p>
         </div>
     </div>
 
-    <!-- Corpo Principal -->
-    <main class="editorial-body">
-        <div class="container portal-grid">
+    <!-- Layout Principal -->
+    <main class="container main-layout">
+        <div class="main-content">
 
-            <div class="main-column">
-
-                <div class="gov-box">
-                    <div class="box-header">
-                        <h2>Leis Orçamentárias do Município de Amparo</h2>
-                        <span class="box-subtitle">Normas aprovadas pela Câmara Municipal e sancionadas pelo Poder Executivo</span>
-                    </div>
-                    <div class="box-content" style="padding: 0;">
-                        <table class="gov-table">
-                            <thead>
-                                <tr>
-                                    <th>Norma Legal</th>
-                                    <th>Número / Exercício</th>
-                                    <th>Objeto / Ementa Oficial</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>LOA 2026</strong></td>
-                                    <td>Lei Municipal nº 4.321/2025</td>
-                                    <td>Estima a receita e fixa a despesa do Município de Amparo para o exercício fiscal de 2026.</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>LDO 2026</strong></td>
-                                    <td>Lei Municipal nº 4.298/2025</td>
-                                    <td>Dispõe sobre as diretrizes orçamentárias do Município para o exercício de 2026.</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>PPA 2026-2029</strong></td>
-                                    <td>Lei Municipal nº 4.150/2025</td>
-                                    <td>Plano Plurianual de Ação Governamental do Município de Amparo para o quadriênio 2026-2029.</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Código Tributário Municipal</strong></td>
-                                    <td>Lei nº 1.890 e alterações</td>
-                                    <td>Institui o Código Tributário do Município de Amparo e estabelece normas de arrecadação.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+            <div class="gov-card">
+                <div class="card-title">Legislação Orçamentária do Município de Amparo</div>
+                <div class="card-body" style="padding: 0;">
+                    <table class="stn-table">
+                        <thead>
+                            <tr>
+                                <th>Instrumento Legal</th>
+                                <th>Número e Ano</th>
+                                <th>Ementa / Objeto Oficial</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>LOA 2026</strong></td>
+                                <td>Lei Municipal nº 4.321/2025</td>
+                                <td>Estima a receita e fixa a despesa do Município de Amparo para o exercício de 2026.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>LDO 2026</strong></td>
+                                <td>Lei Municipal nº 4.298/2025</td>
+                                <td>Dispõe sobre as diretrizes orçamentárias do Município para o exercício de 2026.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>PPA 2026-2029</strong></td>
+                                <td>Lei Municipal nº 4.150/2025</td>
+                                <td>Plano Plurianual de Ação Governamental do Município para o quadriênio 2026-2029.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Código Tributário Municipal</strong></td>
+                                <td>Lei Municipal nº 1.890</td>
+                                <td>Institui o Código Tributário do Município de Amparo e consolida normas fiscais.</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-
-                <div class="gov-box">
-                    <div class="box-header">
-                        <h2>Serviço de Informação ao Cidadão (e-SIC)</h2>
-                        <span class="box-subtitle">Regulamentado pela Lei Federal nº 12.527/2011</span>
-                    </div>
-                    <div class="box-content">
-                        <p style="font-size: 13px; line-height: 1.6; color: var(--text-sub); margin-bottom: 12px;">
-                            O e-SIC permite que qualquer pessoa física ou jurídica solicite dados, documentos e relatórios à administração pública direta e indireta do Município de Amparo. O pedido pode ser registrado de forma online no portal oficial da prefeitura ou presencialmente no Protocolo Geral.
-                        </p>
-                        <p style="font-size: 12px; color: var(--gov-blue-dark); font-weight: 700;">
-                            Prazo de Resposta Legal: 20 (vinte) dias corridos, prorrogáveis por mais 10 (dez) dias mediante justificativa expressa.
-                        </p>
-                    </div>
-                </div>
-
             </div>
 
-            <!-- Sidebar -->
-            <aside class="sidebar-column">
-                <div class="sidebar-box">
-                    <div class="sidebar-title">Portais Oficiais</div>
-                    <div class="sidebar-body">
-                        <ul class="stat-list" style="font-size: 12px;">
-                            <li class="stat-item"><span class="lbl">Prefeitura de Amparo:</span><span class="val">amparo.sp.gov.br</span></li>
-                            <li class="stat-item"><span class="lbl">Câmara Municipal:</span><span class="val">camaramparo.sp.gov.br</span></li>
-                            <li class="stat-item"><span class="lbl">TCESP (Fiscalização):</span><span class="val">tce.sp.gov.br</span></li>
-                        </ul>
-                    </div>
+            <div class="gov-card">
+                <div class="card-title">Serviço de Informação ao Cidadão (e-SIC)</div>
+                <div class="card-body">
+                    <p style="font-size: 12px; color: var(--text-muted); line-height: 1.6;">
+                        Regulamentado em âmbito nacional pela Lei Federal nº 12.527/2011, o e-SIC garante a qualquer cidadão o direito de solicitar informações públicas, relatórios e documentos à administração municipal de Amparo. O prazo de resposta legal é de até 20 dias úteis.
+                    </p>
                 </div>
-
-                <div class="sidebar-box">
-                    <div class="sidebar-title">Atendimento Presencial</div>
-                    <div class="sidebar-body" style="font-size: 12px; color: var(--text-sub); line-height: 1.5;">
-                        <p><strong>Protocolo Geral da Prefeitura:</strong><br>Av. Bernardino de Campos, nº 705 - Centro, Amparo - SP.<br>Horário: Segunda a Sexta, das 08h às 17h.</p>
-                    </div>
-                </div>
-            </aside>
+            </div>
 
         </div>
+
+        <aside class="sidebar-content">
+            <div class="side-box">
+                <div class="side-head">Órgãos de Controle</div>
+                <div class="side-body">
+                    <p style="font-size: 11px; color: var(--text-muted); line-height: 1.5;">
+                        As contas públicas do Município de Amparo são fiscalizadas pelo Tribunal de Contas do Estado de São Paulo (TCESP) e pela Câmara Municipal.
+                    </p>
+                </div>
+            </div>
+        </aside>
     </main>
 
     <!-- Rodapé Oficial -->
-    <footer class="portal-footer">
+    <footer class="gov-footer">
         <div class="container">
             <div class="footer-flex">
-                <div class="footer-brand">
-                    <h3>Prefeitura Municipal da Estância Hidromineral de Amparo</h3>
-                    <p>Portal Oficial de Transparência Fiscal e Prestação de Contas</p>
+                <div>
+                    <h3 style="color: #ffffff; font-size: 14px; font-weight: 700;">Prefeitura Municipal da Estância Hidromineral de Amparo</h3>
+                    <p style="font-size: 11px; color: #94a3b8; margin-top: 2px;">Portal Oficial de Transparência Fiscal e Prestação de Contas</p>
                 </div>
                 <ul class="footer-nav">
                     <li><a href="index.html">Início</a></li>
                     <li><a href="tributos.html">Receitas</a></li>
-                    <li><a href="retorno.html">Aplicação</a></li>
-                    <li><a href="calculadora.html">Simulação</a></li>
+                    <li><a href="retorno.html">Despesas</a></li>
+                    <li><a href="calculadora.html">Consulta</a></li>
                     <li><a href="transparencia.html">Legislação</a></li>
                 </ul>
             </div>

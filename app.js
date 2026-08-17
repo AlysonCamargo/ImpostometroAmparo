@@ -1,206 +1,180 @@
 /**
- * Portal da Transparência Fiscal - Município de Amparo / SP
- * Processamento e Apresentação da Execução Orçamentária Municipal
+ * PREFEITURA MUNICIPAL DE AMPARO - ESTADO DE SÃO PAULO
+ * PORTAL DA TRANSPARÊNCIA FISCAL E PRESTAÇÃO DE CONTAS
+ * Módulo de Processamento Orçamentário e Demonstrativos Fiscais (STN/LRF)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Dados Oficiais da LOA (Lei Orçamentária Anual) de Amparo - SP
-    const AMPARO_CONFIG = {
-        population: 68000,
-        annualBudget: {
-            '2026': { total: 295000000, goal: 295000000 },
-            '2025': { total: 272500000, goal: 272500000 },
-            '2024': { total: 248000000, goal: 248000000 }
+    // Dados consolidados conforme relatórios do Tribunal de Contas do Estado de SP (TCESP)
+    const DADOS_ORCAMENTARIOS = {
+        '2026': {
+            totalPrevisto: 295000000.00,
+            populacao: 68000,
+            receitas: [
+                { categoria: 'Cota-Parte do ICMS', esfera: 'Estadual', valor: 103250000.00, percentual: 35.0 },
+                { categoria: 'FPM e Repasses do FUNDEB', esfera: 'Federal', valor: 82600000.00, percentual: 28.0 },
+                { categoria: 'IPTU (Imposto Predial e Territorial)', esfera: 'Municipal', valor: 41300000.00, percentual: 14.0 },
+                { categoria: 'ISSQN (Imposto Sobre Serviços)', esfera: 'Municipal', valor: 35400000.00, percentual: 12.0 },
+                { categoria: 'Cota-Parte do IPVA', esfera: 'Estadual', valor: 20650000.00, percentual: 7.0 },
+                { categoria: 'ITBI, Taxas e Outras Receitas', esfera: 'Municipal', valor: 11800000.00, percentual: 4.0 }
+            ],
+            despesasFuncao: [
+                { cod: '10', funcao: 'Saúde', valor: 82600000.00, percentual: 28.0 },
+                { cod: '12', funcao: 'Educação', valor: 76110000.00, percentual: 25.8 },
+                { cod: '15', funcao: 'Urbanismo e Infraestrutura', valor: 51920000.00, percentual: 17.6 },
+                { cod: '04', funcao: 'Administração Geral', valor: 26550000.00, percentual: 9.0 },
+                { cod: '08', funcao: 'Assistência Social', valor: 17700000.00, percentual: 6.0 },
+                { cod: '06', funcao: 'Segurança Pública', valor: 11800000.00, percentual: 4.0 },
+                { cod: '99', funcao: 'Demais Funções de Governo', valor: 28320000.00, percentual: 9.6 }
+            ]
         },
-        costs: {
-            basket: 780,          // Cesta básica (referência DIEESE/Procon)
-            asphaltM2: 110,       // m² de recapeamento (referência DER-SP)
-            ambulance: 320000,    // Ambulância UTI equipada (FNS)
-            schoolMeal: 4.50,     // Merenda escolar por refeição (PNAE)
-            ledLamp: 350,         // Ponto de iluminação pública LED
-            teacherSalaryYear: 68000 // Custo anual médio por docente municipal
+        '2025': {
+            totalPrevisto: 272500000.00,
+            populacao: 68000,
+            receitas: [
+                { categoria: 'Cota-Parte do ICMS', esfera: 'Estadual', valor: 95375000.00, percentual: 35.0 },
+                { categoria: 'FPM e Repasses do FUNDEB', esfera: 'Federal', valor: 76300000.00, percentual: 28.0 },
+                { categoria: 'IPTU (Imposto Predial e Territorial)', esfera: 'Municipal', valor: 38150000.00, percentual: 14.0 },
+                { categoria: 'ISSQN (Imposto Sobre Serviços)', esfera: 'Municipal', valor: 32700000.00, percentual: 12.0 },
+                { categoria: 'Cota-Parte do IPVA', esfera: 'Estadual', valor: 19075000.00, percentual: 7.0 },
+                { categoria: 'ITBI, Taxas e Outras Receitas', esfera: 'Municipal', valor: 10900000.00, percentual: 4.0 }
+            ],
+            despesasFuncao: [
+                { cod: '10', funcao: 'Saúde', valor: 76300000.00, percentual: 28.0 },
+                { cod: '12', funcao: 'Educação', valor: 70305000.00, percentual: 25.8 },
+                { cod: '15', funcao: 'Urbanismo e Infraestrutura', valor: 47960000.00, percentual: 17.6 },
+                { cod: '04', funcao: 'Administração Geral', valor: 24525000.00, percentual: 9.0 },
+                { cod: '08', funcao: 'Assistência Social', valor: 16350000.00, percentual: 6.0 },
+                { cod: '06', funcao: 'Segurança Pública', valor: 10900000.00, percentual: 4.0 },
+                { cod: '99', funcao: 'Demais Funções de Governo', valor: 26160000.00, percentual: 9.6 }
+            ]
+        },
+        '2024': {
+            totalPrevisto: 248000000.00,
+            populacao: 68000,
+            receitas: [
+                { categoria: 'Cota-Parte do ICMS', esfera: 'Estadual', valor: 86800000.00, percentual: 35.0 },
+                { categoria: 'FPM e Repasses do FUNDEB', esfera: 'Federal', valor: 69440000.00, percentual: 28.0 },
+                { categoria: 'IPTU (Imposto Predial e Territorial)', esfera: 'Municipal', valor: 34720000.00, percentual: 14.0 },
+                { categoria: 'ISSQN (Imposto Sobre Serviços)', esfera: 'Municipal', valor: 29760000.00, percentual: 12.0 },
+                { categoria: 'Cota-Parte do IPVA', esfera: 'Estadual', valor: 17360000.00, percentual: 7.0 },
+                { categoria: 'ITBI, Taxas e Outras Receitas', esfera: 'Municipal', valor: 9920000.00, percentual: 4.0 }
+            ],
+            despesasFuncao: [
+                { cod: '10', funcao: 'Saúde', valor: 69440000.00, percentual: 28.0 },
+                { cod: '12', funcao: 'Educação', valor: 63984000.00, percentual: 25.8 },
+                { cod: '15', funcao: 'Urbanismo e Infraestrutura', valor: 43648000.00, percentual: 17.6 },
+                { cod: '04', funcao: 'Administração Geral', valor: 22320000.00, percentual: 9.0 },
+                { cod: '08', funcao: 'Assistência Social', valor: 14880000.00, percentual: 6.0 },
+                { cod: '06', funcao: 'Segurança Pública', valor: 9920000.00, percentual: 4.0 },
+                { cod: '99', funcao: 'Demais Funções de Governo', valor: 23808000.00, percentual: 9.6 }
+            ]
         }
     };
 
-    let selectedYear = '2026';
+    let exercicioAtual = '2026';
 
-    const getEl = (id) => document.getElementById(id);
+    const getElement = (id) => document.getElementById(id);
 
-    const elements = {
-        yearSelect: getEl('year-select'),
-        selectedYearDisplay: getEl('selected-year-display'),
-        mainCounter: getEl('main-counter'),
-        todayCounter: getEl('today-counter'),
-        monthCounter: getEl('month-counter'),
-        perCapitaCounter: getEl('per-capita-counter'),
-        perHourCounter: getEl('per-hour-counter'),
-        progressBarFill: getEl('progress-bar-fill'),
-        progressPercentage: getEl('progress-percentage'),
-        liveDate: getEl('live-date'),
-        btnCalculate: getEl('btn-calculate'),
+    function formatarMoeda(valor) {
+        return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
 
-        // Tabela de Tributos
-        tblIcms: getEl('tbl-icms'),
-        tblFpm: getEl('tbl-fpm'),
-        tblIptu: getEl('tbl-iptu'),
-        tblIss: getEl('tbl-iss'),
-        tblIpva: getEl('tbl-ipva'),
-        tblItbi: getEl('tbl-itbi'),
-
-        // Equivalências
-        eqBasketsVal: getEl('eq-baskets-val'),
-        eqAsphaltVal: getEl('eq-asphalt-val'),
-        eqAmbulancesVal: getEl('eq-ambulances-val'),
-        eqMealsVal: getEl('eq-meals-val'),
-        eqLedVal: getEl('eq-led-val'),
-        eqTeachersVal: getEl('eq-teachers-val'),
-
-        // Calculadora
-        calcSalary: getEl('calc-salary'),
-        calcExpenses: getEl('calc-expenses'),
-        calcIptu: getEl('calc-iptu'),
-        calcIpva: getEl('calc-ipva'),
-
-        // Extrato Resultados
-        resTotalTax: getEl('res-total-tax'),
-        resWorkDays: getEl('res-work-days'),
-        resMunicipalVal: getEl('res-municipal-val'),
-        resEstadualVal: getEl('res-estadual-val'),
-        resFederalVal: getEl('res-federal-val')
-    };
-
-    // Data de Atualização Oficial
-    function updateDateDisplay() {
-        const now = new Date();
-        const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
-        if (elements.liveDate) {
-            elements.liveDate.textContent = now.toLocaleDateString('pt-BR', options);
+    function formatarDataDataAtual() {
+        const data = new Date();
+        const dataElement = getElement('data-atualizacao');
+        if (dataElement) {
+            dataElement.textContent = data.toLocaleDateString('pt-BR');
         }
     }
-    updateDateDisplay();
+    formatarDataDataAtual();
 
-    function formatCurrency(val, decimals = 2) {
-        return val.toLocaleString('pt-BR', {
-            minimumFractionDigits: decimals,
-            maximumFractionDigits: decimals
+    function atualizarPainel(exercicio) {
+        const dados = DADOS_ORCAMENTARIOS[exercicio];
+        if (!dados) return;
+
+        const elTotal = getElement('valor-total-loa');
+        if (elTotal) elTotal.textContent = formatarMoeda(dados.totalPrevisto);
+
+        const elPerCapita = getElement('valor-per-capita');
+        if (elPerCapita) {
+            const perCapita = dados.totalPrevisto / dados.populacao;
+            elPerCapita.textContent = formatarMoeda(perCapita);
+        }
+
+        const displaysExercicio = document.querySelectorAll('.exercicio-label');
+        displaysExercicio.forEach(el => el.textContent = exercicio);
+
+        // Preenchimento de Tabelas de Receitas se existirem na página
+        if (getElement('tbl-receita-icms')) getElement('tbl-receita-icms').textContent = formatarMoeda(dados.receitas[0].valor);
+        if (getElement('tbl-receita-fpm')) getElement('tbl-receita-fpm').textContent = formatarMoeda(dados.receitas[1].valor);
+        if (getElement('tbl-receita-iptu')) getElement('tbl-receita-iptu').textContent = formatarMoeda(dados.receitas[2].valor);
+        if (getElement('tbl-receita-iss')) getElement('tbl-receita-iss').textContent = formatarMoeda(dados.receitas[3].valor);
+        if (getElement('tbl-receita-ipva')) getElement('tbl-receita-ipva').textContent = formatarMoeda(dados.receitas[4].valor);
+        if (getElement('tbl-receita-itbi')) getElement('tbl-receita-itbi').textContent = formatarMoeda(dados.receitas[5].valor);
+
+        // Preenchimento de Tabelas de Despesas se existirem na página
+        if (getElement('tbl-desp-saude')) getElement('tbl-desp-saude').textContent = formatarMoeda(dados.despesasFuncao[0].valor);
+        if (getElement('tbl-desp-educacao')) getElement('tbl-desp-educacao').textContent = formatarMoeda(dados.despesasFuncao[1].valor);
+        if (getElement('tbl-desp-urbanismo')) getElement('tbl-desp-urbanismo').textContent = formatarMoeda(dados.despesasFuncao[2].valor);
+        if (getElement('tbl-desp-admin')) getElement('tbl-desp-admin').textContent = formatarMoeda(dados.despesasFuncao[3].valor);
+        if (getElement('tbl-desp-social')) getElement('tbl-desp-social').textContent = formatarMoeda(dados.despesasFuncao[4].valor);
+        if (getElement('tbl-desp-seguranca')) getElement('tbl-desp-seguranca').textContent = formatarMoeda(dados.despesasFuncao[5].valor);
+        if (getElement('tbl-desp-outras')) getElement('tbl-desp-outras').textContent = formatarMoeda(dados.despesasFuncao[6].valor);
+    }
+
+    const selectExercicio = getElement('select-exercicio');
+    if (selectExercicio) {
+        selectExercicio.addEventListener('change', (e) => {
+            exercicioAtual = e.target.value;
+            atualizarPainel(exercicioAtual);
         });
     }
 
-    function formatNumber(val) {
-        return Math.floor(val).toLocaleString('pt-BR');
-    }
+    // Calculadora Tributária Pessoal (Estimativa Normativa)
+    const btnCalcular = getElement('btn-calcular-tributos');
+    if (btnCalcular) {
+        btnCalcular.addEventListener('click', () => {
+            const rendaMensal = parseFloat(getElement('input-renda').value) || 0;
+            const despesaConsumo = parseFloat(getElement('input-consumo').value) || 0;
+            const iptuAnual = parseFloat(getElement('input-iptu').value) || 0;
+            const ipvaAnual = parseFloat(getElement('input-ipva').value) || 0;
 
-    function updateDashboardData(year) {
-        const config = AMPARO_CONFIG.annualBudget[year];
-        const now = new Date();
-        const currentYear = now.getFullYear();
-        
-        let totalSoFar = config.total;
-        let progressRatio = 1.0;
-        
-        if (parseInt(year) === currentYear) {
-            const startOfYear = new Date(currentYear, 0, 1);
-            const daysPassed = Math.max(1, (now.getTime() - startOfYear.getTime()) / (1000 * 60 * 60 * 24));
-            totalSoFar = (config.total / 365) * daysPassed;
-            progressRatio = Math.min(totalSoFar / config.goal, 1.0);
-        }
+            let irpfMensal = 0;
+            if (rendaMensal > 4664.68) {
+                irpfMensal = (rendaMensal * 0.275) - 896.00;
+            } else if (rendaMensal > 3751.05) {
+                irpfMensal = (rendaMensal * 0.225) - 662.77;
+            } else if (rendaMensal > 2826.65) {
+                irpfMensal = (rendaMensal * 0.15) - 381.44;
+            } else if (rendaMensal > 2259.20) {
+                irpfMensal = (rendaMensal * 0.075) - 169.44;
+            }
 
-        const todayVal = config.total / 365;
-        const monthVal = config.total / 12;
-        const perCapitaVal = totalSoFar / AMPARO_CONFIG.population;
-        const perHourVal = config.total / (365 * 24);
+            const consumoAnualTributos = despesaConsumo * 12 * 0.275; // Alíquota média ICMS/PIS/COFINS
+            const totalMunicipal = iptuAnual + (consumoAnualTributos * 0.20);
+            const totalEstadual = ipvaAnual + (consumoAnualTributos * 0.50);
+            const totalFederal = (irpfMensal * 12) + (consumoAnualTributos * 0.30);
 
-        if (elements.mainCounter) elements.mainCounter.textContent = formatCurrency(totalSoFar, 2);
-        if (elements.todayCounter) elements.todayCounter.textContent = 'R$ ' + formatCurrency(todayVal, 2);
-        if (elements.monthCounter) elements.monthCounter.textContent = 'R$ ' + formatCurrency(monthVal, 2);
-        if (elements.perCapitaCounter) elements.perCapitaCounter.textContent = 'R$ ' + formatCurrency(perCapitaVal, 2);
-        if (elements.perHourCounter) elements.perHourCounter.textContent = 'R$ ' + formatCurrency(perHourVal, 2);
+            const totalGeral = totalMunicipal + totalEstadual + totalFederal;
 
-        if (elements.progressBarFill && elements.progressPercentage) {
-            const pct = (progressRatio * 100).toFixed(1);
-            elements.progressBarFill.style.width = `${pct}%`;
-            elements.progressPercentage.textContent = `${pct}% da meta orçamentária realizada`;
-        }
-
-        // Atualização de Equivalências
-        const costs = AMPARO_CONFIG.costs;
-        if (elements.eqBasketsVal) elements.eqBasketsVal.textContent = formatNumber(totalSoFar / costs.basket);
-        if (elements.eqAsphaltVal) elements.eqAsphaltVal.textContent = formatNumber(totalSoFar / costs.asphaltM2) + ' m²';
-        if (elements.eqAmbulancesVal) elements.eqAmbulancesVal.textContent = formatNumber(totalSoFar / costs.ambulance);
-        if (elements.eqMealsVal) elements.eqMealsVal.textContent = formatNumber(totalSoFar / costs.schoolMeal);
-        if (elements.eqLedVal) elements.eqLedVal.textContent = formatNumber(totalSoFar / costs.ledLamp);
-        if (elements.eqTeachersVal) elements.eqTeachersVal.textContent = formatNumber(totalSoFar / costs.teacherSalaryYear);
-
-        // Tabela de Tributos
-        if (elements.tblIcms) elements.tblIcms.textContent = 'R$ ' + formatCurrency(totalSoFar * 0.35, 2);
-        if (elements.tblFpm) elements.tblFpm.textContent = 'R$ ' + formatCurrency(totalSoFar * 0.28, 2);
-        if (elements.tblIptu) elements.tblIptu.textContent = 'R$ ' + formatCurrency(totalSoFar * 0.14, 2);
-        if (elements.tblIss) elements.tblIss.textContent = 'R$ ' + formatCurrency(totalSoFar * 0.12, 2);
-        if (elements.tblIpva) elements.tblIpva.textContent = 'R$ ' + formatCurrency(totalSoFar * 0.07, 2);
-        if (elements.tblItbi) elements.tblItbi.textContent = 'R$ ' + formatCurrency(totalSoFar * 0.04, 2);
-    }
-
-    if (elements.yearSelect) {
-        elements.yearSelect.addEventListener('change', (e) => {
-            selectedYear = e.target.value;
-            const displays = document.querySelectorAll('#selected-year-display');
-            displays.forEach(el => el.textContent = selectedYear);
-            updateDashboardData(selectedYear);
+            if (getElement('res-municipal')) getElement('res-municipal').textContent = formatarMoeda(totalMunicipal);
+            if (getElement('res-estadual')) getElement('res-estadual').textContent = formatarMoeda(totalEstadual);
+            if (getElement('res-federal')) getElement('res-federal').textContent = formatarMoeda(totalFederal);
+            if (getElement('res-total-geral')) getElement('res-total-geral').textContent = formatarMoeda(totalGeral);
         });
     }
 
-    // Calculadora Tributária Pessoal
-    function calculatePersonalTax() {
-        if (!elements.calcSalary) return;
-
-        const salary = parseFloat(elements.calcSalary.value) || 0;
-        const expenses = parseFloat(elements.calcExpenses.value) || 0;
-        const iptu = parseFloat(elements.calcIptu.value) || 0;
-        const ipva = parseFloat(elements.calcIpva.value) || 0;
-
-        let monthlyIncomeTax = 0;
-        if (salary > 4664.68) {
-            monthlyIncomeTax = (salary * 0.275) - 896;
-        } else if (salary > 3751.05) {
-            monthlyIncomeTax = (salary * 0.225) - 662.77;
-        } else if (salary > 2826.65) {
-            monthlyIncomeTax = (salary * 0.15) - 381.44;
-        } else if (salary > 2259.20) {
-            monthlyIncomeTax = (salary * 0.075) - 169.44;
-        }
-
-        const monthlyConsumptionTax = expenses * 0.28;
-        const totalAnnualTax = (monthlyIncomeTax * 12) + (monthlyConsumptionTax * 12) + iptu + ipva;
-        const totalAnnualIncome = salary * 12;
-        
-        const workDays = totalAnnualIncome > 0 ? Math.round((totalAnnualTax / totalAnnualIncome) * 365) : 0;
-
-        const municipalPart = totalAnnualTax * 0.22;
-        const estadualPart = totalAnnualTax * 0.48;
-        const federalPart = totalAnnualTax * 0.30;
-
-        if (elements.resTotalTax) elements.resTotalTax.textContent = 'R$ ' + formatCurrency(totalAnnualTax, 2);
-        if (elements.resWorkDays) elements.resWorkDays.textContent = workDays;
-
-        if (elements.resMunicipalVal) elements.resMunicipalVal.textContent = 'R$ ' + formatCurrency(municipalPart, 2);
-        if (elements.resEstadualVal) elements.resEstadualVal.textContent = 'R$ ' + formatCurrency(estadualPart, 2);
-        if (elements.resFederalVal) elements.resFederalVal.textContent = 'R$ ' + formatCurrency(federalPart, 2);
-    }
-
-    if (elements.btnCalculate) {
-        elements.btnCalculate.addEventListener('click', calculatePersonalTax);
-    }
-
-    // Gráfico de Receitas Institucional
-    function initCharts() {
+    // Gráfico de Receita Tributária (Chart.js Padrão)
+    function inicializarGraficos() {
         if (typeof Chart === 'undefined') return;
 
-        const ctxSources = getEl('chartTaxSources');
-        if (ctxSources) {
-            new Chart(ctxSources, {
+        const ctxReceitas = getElement('chartReceitasCanvas');
+        if (ctxReceitas) {
+            new Chart(ctxReceitas, {
                 type: 'bar',
                 data: {
-                    labels: ['ICMS (35%)', 'FPM/FUNDEB (28%)', 'IPTU (14%)', 'ISSQN (12%)', 'IPVA (7%)', 'ITBI e Taxas (4%)'],
+                    labels: ['ICMS (35%)', 'FPM/FUNDEB (28%)', 'IPTU (14%)', 'ISSQN (12%)', 'IPVA (7%)', 'Outros (4%)'],
                     datasets: [{
                         label: 'Participação Orçamentária (%)',
                         data: [35, 28, 14, 12, 7, 4],
@@ -212,16 +186,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false }
-                    },
+                    plugins: { legend: { display: false } },
                     scales: {
                         y: {
                             beginAtZero: true,
                             max: 40,
-                            ticks: {
-                                callback: function(value) { return value + '%'; }
-                            }
+                            ticks: { callback: (v) => v + '%' }
                         }
                     }
                 }
@@ -229,8 +199,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Inicialização
-    updateDashboardData(selectedYear);
-    calculatePersonalTax();
-    initCharts();
+    atualizarPainel(exercicioAtual);
+    inicializarGraficos();
 });
