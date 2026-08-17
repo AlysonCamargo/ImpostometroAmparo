@@ -1,0 +1,689 @@
+/* ==========================================================================
+   PORTAL DA TRANSPARÊNCIA FISCAL - MUNICÍPIO DE AMPARO / SP
+   Estância Hidromineral de Amparo - Estado de São Paulo
+   Padrão Institucional Oficial de Transparência Pública
+   ========================================================================== */
+
+:root {
+    /* Paleta Institucional e Sóbria */
+    --gov-blue-dark: #0f2b48;
+    --gov-blue-main: #1e40af;
+    --gov-blue-hover: #1e3a8a;
+    --gov-blue-light: #eff6ff;
+    
+    --gov-green: #15803d;
+    --gov-green-light: #f0fdf4;
+    
+    --bg-page: #f8fafc;
+    --bg-card: #ffffff;
+    --bg-subtle: #f1f5f9;
+
+    --text-main: #0f172a;
+    --text-sub: #334155;
+    --text-muted: #64748b;
+    --text-light: #94a3b8;
+
+    --border-main: #cbd5e1;
+    --border-light: #e2e8f0;
+
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+    --radius-sm: 4px;
+    --radius-md: 6px;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+/* Reset Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    font-family: var(--font-family);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Barra Institucional Superior (Governamental) */
+.gov-topbar {
+    background-color: var(--gov-blue-dark);
+    color: #ffffff;
+    font-size: 12px;
+    padding: 6px 0;
+    border-bottom: 2px solid var(--gov-blue-main);
+}
+
+.topbar-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+}
+
+.topbar-tag {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.topbar-right {
+    font-size: 11px;
+    color: #cbd5e1;
+}
+
+/* Cabeçalho do Portal Oficial */
+.portal-header {
+    background: #ffffff;
+    border-bottom: 2px solid var(--gov-blue-dark);
+    padding: 20px 0;
+}
+
+.header-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.brand-section a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.brand-coat-of-arms {
+    width: 48px;
+    height: 48px;
+    background: var(--gov-blue-dark);
+    color: #ffffff;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 1px;
+    border: 1px solid var(--gov-blue-main);
+}
+
+.brand-text h1 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--gov-blue-dark);
+    line-height: 1.15;
+    letter-spacing: -0.3px;
+    text-transform: uppercase;
+}
+
+.brand-text .tagline {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.year-select-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-sub);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.gov-select {
+    background: #ffffff;
+    color: var(--text-main);
+    border: 1px solid var(--border-main);
+    padding: 7px 12px;
+    font-family: var(--font-family);
+    font-size: 13px;
+    font-weight: 600;
+    outline: none;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+}
+
+.gov-select:focus {
+    border-color: var(--gov-blue-main);
+}
+
+.btn-gov {
+    background: var(--gov-blue-main);
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-gov:hover {
+    background: var(--gov-blue-hover);
+}
+
+/* Navegação Institucional em Abas */
+.portal-nav {
+    background: var(--gov-blue-dark);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 0;
+    overflow-x: auto;
+}
+
+.nav-links a {
+    display: block;
+    color: #e2e8f0;
+    text-decoration: none;
+    padding: 12px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s;
+}
+
+.nav-links a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.nav-links a.active {
+    background: var(--gov-blue-main);
+    color: #ffffff;
+    font-weight: 700;
+}
+
+/* Banner de Seção Oficial */
+.page-banner {
+    background: #ffffff;
+    border-bottom: 1px solid var(--border-light);
+    padding: 20px 0;
+    margin-bottom: 24px;
+}
+
+.breadcrumb {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.breadcrumb a {
+    color: var(--gov-blue-main);
+    text-decoration: none;
+}
+
+.page-banner h2 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--gov-blue-dark);
+}
+
+.page-banner p {
+    font-size: 13px;
+    color: var(--text-sub);
+    margin-top: 4px;
+}
+
+/* Layout Principal e Grid */
+.editorial-body {
+    padding-bottom: 48px;
+}
+
+.portal-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 28px;
+}
+
+@media (max-width: 992px) {
+    .portal-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Containers e Quadros Oficiais */
+.gov-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-main);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 24px;
+    overflow: hidden;
+}
+
+.box-header {
+    background: var(--bg-subtle);
+    border-bottom: 1px solid var(--border-main);
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.box-header h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gov-blue-dark);
+}
+
+.box-header .box-subtitle {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.box-content {
+    padding: 20px;
+}
+
+/* Painel de Execução Orçamentária (Substitui Ticker e Scoreboard) */
+.gov-summary-card {
+    background: #ffffff;
+    border: 1px solid var(--border-main);
+    border-left: 5px solid var(--gov-blue-main);
+    border-radius: var(--radius-sm);
+    padding: 20px;
+    margin-bottom: 24px;
+}
+
+.gov-summary-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.gov-summary-value {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--gov-blue-dark);
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 8px;
+}
+
+.gov-summary-desc {
+    font-size: 13px;
+    color: var(--text-sub);
+}
+
+/* Meta e Barra de Progresso Oficial */
+.ledger-meta {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-light);
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.progress-bar-track {
+    width: 100%;
+    height: 10px;
+    background: #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: var(--gov-blue-main);
+    transition: width 0.5s ease;
+}
+
+/* Quadros de Indicadores Técnicos */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+@media (max-width: 640px) {
+    .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.kpi-card {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-light);
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+}
+
+.kpi-card .label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.kpi-card .val {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gov-blue-dark);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Tabelas Institucionais */
+.gov-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    text-align: left;
+}
+
+.gov-table th {
+    background: var(--gov-blue-dark);
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    padding: 10px 14px;
+}
+
+.gov-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text-main);
+}
+
+.gov-table tr:nth-child(even) {
+    background: var(--bg-subtle);
+}
+
+.gov-table tr:hover {
+    background: #e2e8f0;
+}
+
+.num-col {
+    text-align: right;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Tags de Esfera Fiscal */
+.tag-esfera {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.tag-esfera.municipal { background: #dbeafe; color: #1e40af; }
+.tag-esfera.estadual { background: #fef3c7; color: #92400e; }
+.tag-esfera.federal { background: #dcfce7; color: #166534; }
+
+/* Caixa de Nota Informativa Oficial */
+.gov-info-box {
+    background: #f8fafc;
+    border-left: 4px solid var(--gov-blue-main);
+    padding: 14px 18px;
+    border: 1px solid var(--border-main);
+    border-left: 4px solid var(--gov-blue-main);
+    border-radius: var(--radius-sm);
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: var(--text-sub);
+}
+
+.gov-info-box h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gov-blue-dark);
+    margin-bottom: 4px;
+}
+
+/* Sidebar Institucional */
+.sidebar-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-main);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.sidebar-title {
+    background: var(--gov-blue-dark);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 10px 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sidebar-body {
+    padding: 14px;
+}
+
+.stat-list {
+    list-style: none;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 12px;
+}
+
+.stat-item:last-child {
+    border-bottom: none;
+}
+
+.stat-item .lbl {
+    color: var(--text-muted);
+}
+
+.stat-item .val {
+    font-weight: 700;
+    color: var(--gov-blue-dark);
+}
+
+/* Formulário e Demonstrativo Técnico */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+@media (max-width: 640px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-group label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-sub);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--border-main);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-family);
+    font-size: 13px;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: var(--gov-blue-main);
+}
+
+.btn-calc {
+    background: var(--gov-blue-main);
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-calc:hover {
+    background: var(--gov-blue-hover);
+}
+
+/* Demonstrativo Impresso / Relatório */
+.gov-report-box {
+    background: #ffffff;
+    border: 1px solid var(--border-main);
+    padding: 20px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+}
+
+.report-header {
+    text-align: center;
+    border-bottom: 1px solid var(--border-main);
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+}
+
+.report-header h4 {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--gov-blue-dark);
+}
+
+.report-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    padding: 2px 0;
+}
+
+.report-total {
+    border-top: 2px solid var(--gov-blue-dark);
+    margin-top: 10px;
+    padding-top: 8px;
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--gov-blue-dark);
+}
+
+/* Rodapé Oficial */
+.portal-footer {
+    background: var(--gov-blue-dark);
+    color: #94a3b8;
+    font-size: 12px;
+    padding: 32px 0 20px 0;
+    border-top: 3px solid var(--gov-blue-main);
+}
+
+.footer-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.footer-brand h3 {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.footer-brand p {
+    font-size: 12px;
+    color: #cbd5e1;
+}
+
+.footer-nav {
+    display: flex;
+    gap: 16px;
+    list-style: none;
+}
+
+.footer-nav a {
+    color: #cbd5e1;
+    text-decoration: none;
+}
+
+.footer-nav a:hover {
+    color: #ffffff;
+}
+
+.chart-box {
+    height: 260px;
+    position: relative;
+}

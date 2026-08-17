@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicação de Recursos — Portal da Transparência de Amparo / SP</title>
+    <meta name="description" content="Demonstrativo da aplicação dos recursos públicos e custos de referência por áreas essenciais do Município de Amparo/SP.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Barra Institucional Superior -->
+    <div class="gov-topbar">
+        <div class="container topbar-flex">
+            <div class="topbar-left">
+                <span class="topbar-tag">MUNICÍPIO DE AMPARO</span>
+                <span>ESTÂNCIA HIDROMINERAL — ESTADO DE SÃO PAULO</span>
+            </div>
+            <div class="topbar-right">
+                <span>CONSOLIDAÇÃO ORÇAMENTÁRIA: <strong id="live-date">--/--/----</strong></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cabeçalho Principal -->
+    <header class="portal-header">
+        <div class="container header-layout">
+            <div class="brand-section">
+                <a href="index.html">
+                    <div class="brand-coat-of-arms">PMA</div>
+                    <div class="brand-text">
+                        <h1>PORTAL DA TRANSPARÊNCIA</h1>
+                        <div class="tagline">Prefeitura Municipal da Estância Hidromineral de Amparo</div>
+                    </div>
+                </a>
+            </div>
+            <div class="header-controls">
+                <span class="year-select-label">Exercício Fiscal:</span>
+                <select id="year-select" class="gov-select">
+                    <option value="2026" selected>2026 (Lei nº 4.321)</option>
+                    <option value="2025">2025 (Consolidado)</option>
+                    <option value="2024">2024 (Consolidado)</option>
+                </select>
+                <button class="btn-gov" onclick="window.print()">Imprimir Relatório</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegação Institucional -->
+    <nav class="portal-nav">
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="tributos.html">Receitas Tributárias</a></li>
+                <li><a href="retorno.html" class="active">Aplicação de Recursos</a></li>
+                <li><a href="calculadora.html">Simulação de Contribuição</a></li>
+                <li><a href="circuito.html">Dados Regionais</a></li>
+                <li><a href="transparencia.html">Legislação e Direitos</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Banner Oficial da Página -->
+    <div class="page-banner">
+        <div class="container">
+            <div class="breadcrumb"><a href="index.html">Início</a> &rsaquo; Aplicação de Recursos</div>
+            <h2>Aplicação dos Recursos Orçamentários</h2>
+            <p>Demonstrativo dos custos de referência e equivalência em bens e serviços públicos mantidos pelo orçamento do Município de Amparo.</p>
+        </div>
+    </div>
+
+    <!-- Corpo Principal -->
+    <main class="editorial-body">
+        <div class="container portal-grid">
+
+            <div class="main-column">
+
+                <!-- Tabela de Equivalência Oficial -->
+                <div class="gov-box">
+                    <div class="box-header">
+                        <h2>Demonstrativo de Equivalência de Custos Públicos</h2>
+                        <span class="box-subtitle">Valores calculados com base nas atas estaduais de registro de preços (<span id="selected-year-display">2026</span>)</span>
+                    </div>
+                    <div class="box-content" style="padding: 0;">
+                        <table class="gov-table">
+                            <thead>
+                                <tr>
+                                    <th>Serviço / Equipamento Público</th>
+                                    <th>Custo Unitário de Referência</th>
+                                    <th class="num-col">Equivalência Estimada no Orçamento</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Cestas Básicas de Assistência Social</strong></td>
+                                    <td>R$ 780,00 por unidade</td>
+                                    <td class="num-col" id="eq-baskets-val">0</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Recapeamento e Pavimentação Asfáltica</strong></td>
+                                    <td>R$ 110,00 por m²</td>
+                                    <td class="num-col" id="eq-asphalt-val">0 m²</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Ambulâncias UTI Equipadas (FNS)</strong></td>
+                                    <td>R$ 320.000,00 por unidade</td>
+                                    <td class="num-col" id="eq-ambulances-val">0</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Merendas Escolares (Rede Municipal)</strong></td>
+                                    <td>R$ 4,50 por refeição</td>
+                                    <td class="num-col" id="eq-meals-val">0</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Pontos de Iluminação Pública LED</strong></td>
+                                    <td>R$ 350,00 por ponto instalado</td>
+                                    <td class="num-col" id="eq-led-val">0</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Custo Anual Médio por Docente Municipal</strong></td>
+                                    <td>R$ 68.000,00 por ano</td>
+                                    <td class="num-col" id="eq-teachers-val">0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="gov-info-box">
+                    <h4>Metodologia dos Custos de Referência</h4>
+                    <p>Os valores unitários de referência são derivados das tabelas oficiais da Fundação Instituto de Pesquisas Econômicas (FIPE), do Departamento de Estradas de Rodagem do Estado de São Paulo (DER-SP), do Fundo Nacional de Saúde (FNS) e do Programa Nacional de Alimentação Escolar (PNAE/FNDE).</p>
+                </div>
+
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="sidebar-column">
+                <div class="sidebar-box">
+                    <div class="sidebar-title">Destinação por Função</div>
+                    <div class="sidebar-body">
+                        <ul class="stat-list">
+                            <li class="stat-item"><span class="lbl">Saúde Pública (SUS):</span><span class="val">28,0%</span></li>
+                            <li class="stat-item"><span class="lbl">Educação Básica:</span><span class="val">25,8%</span></li>
+                            <li class="stat-item"><span class="lbl">Obras e Zeladoria:</span><span class="val">17,6%</span></li>
+                            <li class="stat-item"><span class="lbl">Segurança e Trânsito:</span><span class="val">6,4%</span></li>
+                            <li class="stat-item"><span class="lbl">Demais Secretarias:</span><span class="val">22,2%</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="sidebar-box">
+                    <div class="sidebar-title">Rede Municipal de Saúde</div>
+                    <div class="sidebar-body" style="font-size: 12px; color: var(--text-sub); line-height: 1.5;">
+                        <p>O percentual destinado à saúde cobre a manutenção das Unidades Básicas de Saúde (UBS), do Pronto Atendimento Municipal e o subvençoamento da Santa Casa de Misericórdia de Amparo.</p>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- Rodapé Oficial -->
+    <footer class="portal-footer">
+        <div class="container">
+            <div class="footer-flex">
+                <div class="footer-brand">
+                    <h3>Prefeitura Municipal da Estância Hidromineral de Amparo</h3>
+                    <p>Portal Oficial de Transparência Fiscal e Prestação de Contas</p>
+                </div>
+                <ul class="footer-nav">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="tributos.html">Receitas</a></li>
+                    <li><a href="retorno.html">Aplicação</a></li>
+                    <li><a href="calculadora.html">Simulação</a></li>
+                    <li><a href="transparencia.html">Legislação</a></li>
+                </ul>
+            </div>
+            <div style="text-align: center; font-size: 11px; color: #94a3b8;">
+                <p>&copy; 2026 Município de Amparo - Estado de São Paulo. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

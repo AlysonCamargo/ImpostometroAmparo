@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados Regionais — Portal da Transparência de Amparo / SP</title>
+    <meta name="description" content="Comparativo de indicadores orçamentários do Município de Amparo e cidades da Região do Circuito das Águas Paulistas.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Barra Institucional Superior -->
+    <div class="gov-topbar">
+        <div class="container topbar-flex">
+            <div class="topbar-left">
+                <span class="topbar-tag">MUNICÍPIO DE AMPARO</span>
+                <span>ESTÂNCIA HIDROMINERAL — ESTADO DE SÃO PAULO</span>
+            </div>
+            <div class="topbar-right">
+                <span>CONSOLIDAÇÃO ORÇAMENTÁRIA: <strong id="live-date">--/--/----</strong></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cabeçalho Principal -->
+    <header class="portal-header">
+        <div class="container header-layout">
+            <div class="brand-section">
+                <a href="index.html">
+                    <div class="brand-coat-of-arms">PMA</div>
+                    <div class="brand-text">
+                        <h1>PORTAL DA TRANSPARÊNCIA</h1>
+                        <div class="tagline">Prefeitura Municipal da Estância Hidromineral de Amparo</div>
+                    </div>
+                </a>
+            </div>
+            <div class="header-controls">
+                <span class="year-select-label">Exercício Fiscal:</span>
+                <select id="year-select" class="gov-select">
+                    <option value="2026" selected>2026 (Lei nº 4.321)</option>
+                    <option value="2025">2025 (Consolidado)</option>
+                    <option value="2024">2024 (Consolidado)</option>
+                </select>
+                <button class="btn-gov" onclick="window.print()">Imprimir Relatório</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegação Institucional -->
+    <nav class="portal-nav">
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="tributos.html">Receitas Tributárias</a></li>
+                <li><a href="retorno.html">Aplicação de Recursos</a></li>
+                <li><a href="calculadora.html">Simulação de Contribuição</a></li>
+                <li><a href="circuito.html" class="active">Dados Regionais</a></li>
+                <li><a href="transparencia.html">Legislação e Direitos</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Banner Oficial da Página -->
+    <div class="page-banner">
+        <div class="container">
+            <div class="breadcrumb"><a href="index.html">Início</a> &rsaquo; Dados Regionais</div>
+            <h2>Quadro Comparativo do Circuito das Águas Paulistas</h2>
+            <p>Análise consolidada dos orçamentos municipais e receita per capita comparada entre os municípios integrantes da microrregião.</p>
+        </div>
+    </div>
+
+    <!-- Corpo Principal -->
+    <main class="editorial-body">
+        <div class="container portal-grid">
+
+            <div class="main-column">
+
+                <div class="gov-box">
+                    <div class="box-header">
+                        <h2>Tabela Comparativa de Orçamentos Municipais</h2>
+                        <span class="box-subtitle">Estimativas vigentes registradas nos portais da transparência estaduais</span>
+                    </div>
+                    <div class="box-content" style="padding: 0;">
+                        <table class="gov-table">
+                            <thead>
+                                <tr>
+                                    <th>Município</th>
+                                    <th>População Est. (IBGE)</th>
+                                    <th class="num-col">Orçamento Anual (LOA)</th>
+                                    <th class="num-col">Receita Per Capita / Ano</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background: #e2e8f0; font-weight: 700;">
+                                    <td><strong>AMPARO (Sede de Comarca)</strong></td>
+                                    <td>68.000 hab.</td>
+                                    <td class="num-col">R$ 295.000.000,00</td>
+                                    <td class="num-col">R$ 4.338,23</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Jaguariúna</strong></td>
+                                    <td>59.000 hab.</td>
+                                    <td class="num-col">R$ 480.000.000,00</td>
+                                    <td class="num-col">R$ 8.135,59</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Itapira</strong></td>
+                                    <td>75.000 hab.</td>
+                                    <td class="num-col">R$ 380.000.000,00</td>
+                                    <td class="num-col">R$ 5.066,66</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Pedreira</strong></td>
+                                    <td>48.000 hab.</td>
+                                    <td class="num-col">R$ 190.000.000,00</td>
+                                    <td class="num-col">R$ 3.958,33</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Serra Negra</strong></td>
+                                    <td>29.000 hab.</td>
+                                    <td class="num-col">R$ 165.000.000,00</td>
+                                    <td class="num-col">R$ 5.689,65</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Socorro</strong></td>
+                                    <td>41.000 hab.</td>
+                                    <td class="num-col">R$ 185.000.000,00</td>
+                                    <td class="num-col">R$ 4.512,19</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Águas de Lindoia</strong></td>
+                                    <td>19.000 hab.</td>
+                                    <td class="num-col">R$ 115.000.000,00</td>
+                                    <td class="num-col">R$ 6.052,63</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="gov-info-box">
+                    <h4>Análise Econômica Regional</h4>
+                    <p>Amparo exerce papel central como Sede de Comarca e polo de atendimento em saúde especializada da microrregião. A matriz econômica municipal combina o parque fabril dos distritos industriais de Arcadas e Três Pontes com as atividades turísticas da Estância Hidromineral e do comércio de serviços.</p>
+                </div>
+
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="sidebar-column">
+                <div class="sidebar-box">
+                    <div class="sidebar-title">Região de Governo</div>
+                    <div class="sidebar-body">
+                        <ul class="stat-list">
+                            <li class="stat-item"><span class="lbl">Região Administrativa:</span><span class="val">Campinas</span></li>
+                            <li class="stat-item"><span class="lbl">Comarca Judiciária:</span><span class="val">Amparo / SP</span></li>
+                            <li class="stat-item"><span class="lbl">Consórcio Regional:</span><span class="val">Concircuito</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- Rodapé Oficial -->
+    <footer class="portal-footer">
+        <div class="container">
+            <div class="footer-flex">
+                <div class="footer-brand">
+                    <h3>Prefeitura Municipal da Estância Hidromineral de Amparo</h3>
+                    <p>Portal Oficial de Transparência Fiscal e Prestação de Contas</p>
+                </div>
+                <ul class="footer-nav">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="tributos.html">Receitas</a></li>
+                    <li><a href="retorno.html">Aplicação</a></li>
+                    <li><a href="calculadora.html">Simulação</a></li>
+                    <li><a href="transparencia.html">Legislação</a></li>
+                </ul>
+            </div>
+            <div style="text-align: center; font-size: 11px; color: #94a3b8;">
+                <p>&copy; 2026 Município de Amparo - Estado de São Paulo. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

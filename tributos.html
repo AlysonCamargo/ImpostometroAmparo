@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receitas Tributárias — Portal da Transparência de Amparo / SP</title>
+    <meta name="description" content="Detalhamento da origem das receitas tributárias e transferências constitucionais do Município de Amparo/SP.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Barra Institucional Superior -->
+    <div class="gov-topbar">
+        <div class="container topbar-flex">
+            <div class="topbar-left">
+                <span class="topbar-tag">MUNICÍPIO DE AMPARO</span>
+                <span>ESTÂNCIA HIDROMINERAL — ESTADO DE SÃO PAULO</span>
+            </div>
+            <div class="topbar-right">
+                <span>CONSOLIDAÇÃO ORÇAMENTÁRIA: <strong id="live-date">--/--/----</strong></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cabeçalho Principal -->
+    <header class="portal-header">
+        <div class="container header-layout">
+            <div class="brand-section">
+                <a href="index.html">
+                    <div class="brand-coat-of-arms">PMA</div>
+                    <div class="brand-text">
+                        <h1>PORTAL DA TRANSPARÊNCIA</h1>
+                        <div class="tagline">Prefeitura Municipal da Estância Hidromineral de Amparo</div>
+                    </div>
+                </a>
+            </div>
+            <div class="header-controls">
+                <span class="year-select-label">Exercício Fiscal:</span>
+                <select id="year-select" class="gov-select">
+                    <option value="2026" selected>2026 (Lei nº 4.321)</option>
+                    <option value="2025">2025 (Consolidado)</option>
+                    <option value="2024">2024 (Consolidado)</option>
+                </select>
+                <button class="btn-gov" onclick="window.print()">Imprimir Relatório</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegação Institucional -->
+    <nav class="portal-nav">
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="tributos.html" class="active">Receitas Tributárias</a></li>
+                <li><a href="retorno.html">Aplicação de Recursos</a></li>
+                <li><a href="calculadora.html">Simulação de Contribuição</a></li>
+                <li><a href="circuito.html">Dados Regionais</a></li>
+                <li><a href="transparencia.html">Legislação e Direitos</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Banner Oficial da Página -->
+    <div class="page-banner">
+        <div class="container">
+            <div class="breadcrumb"><a href="index.html">Início</a> &rsaquo; Receitas Tributárias</div>
+            <h2>Composição das Receitas Tributárias</h2>
+            <p>Detalhamento da arrecadação própria municipal e das transferências constitucionais estaduais e federais destinadas ao Município de Amparo.</p>
+        </div>
+    </div>
+
+    <!-- Corpo Principal -->
+    <main class="editorial-body">
+        <div class="container portal-grid">
+
+            <div class="main-column">
+
+                <!-- Tabela de Composição Tributária -->
+                <div class="gov-box">
+                    <div class="box-header">
+                        <h2>Demonstrativo das Origens da Receita</h2>
+                        <span class="box-subtitle">Exercício Fiscal de <span id="selected-year-display">2026</span></span>
+                    </div>
+                    <div class="box-content" style="padding: 0;">
+                        <table class="gov-table">
+                            <thead>
+                                <tr>
+                                    <th>Tributo / Transferência</th>
+                                    <th>Esfera Competente</th>
+                                    <th>Descrição Legal e Especificação</th>
+                                    <th>Participação (%)</th>
+                                    <th class="num-col">Arrecadação Estimada</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>ICMS (Cota-Parte)</strong></td>
+                                    <td><span class="tag-esfera estadual">Estadual</span></td>
+                                    <td>Repasse constitucional relativo à circulação de mercadorias no Estado de SP.</td>
+                                    <td>35,0%</td>
+                                    <td class="num-col" id="tbl-icms">R$ 0,00</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>FPM e FUNDEB</strong></td>
+                                    <td><span class="tag-esfera federal">Federal</span></td>
+                                    <td>Fundo de Participação dos Municípios e Fundo da Educação Básica.</td>
+                                    <td>28,0%</td>
+                                    <td class="num-col" id="tbl-fpm">R$ 0,00</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>IPTU</strong></td>
+                                    <td><span class="tag-esfera municipal">Municipal</span></td>
+                                    <td>Imposto Predial e Territorial Urbano arrecadado diretamente no município.</td>
+                                    <td>14,0%</td>
+                                    <td class="num-col" id="tbl-iptu">R$ 0,00</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ISSQN</strong></td>
+                                    <td><span class="tag-esfera municipal">Municipal</span></td>
+                                    <td>Imposto Sobre Serviços de Qualquer Natureza incidente sobre atividades locais.</td>
+                                    <td>12,0%</td>
+                                    <td class="num-col" id="tbl-iss">R$ 0,00</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>IPVA (Cota 50%)</strong></td>
+                                    <td><span class="tag-esfera estadual">Estadual</span></td>
+                                    <td>Cota-parte de 50% do IPVA dos veículos licenciados no município de Amparo.</td>
+                                    <td>7,0%</td>
+                                    <td class="num-col" id="tbl-ipva">R$ 0,00</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ITBI e Taxas Services</strong></td>
+                                    <td><span class="tag-esfera municipal">Municipal</span></td>
+                                    <td>Imposto de Transmissão de Bens Imóveis e taxas de fiscalização e serviços.</td>
+                                    <td>4,0%</td>
+                                    <td class="num-col" id="tbl-itbi">R$ 0,00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Gráfico Institucional -->
+                <div class="gov-box">
+                    <div class="box-header">
+                        <h2>Gráfico da Distribuição Percentual de Receitas</h2>
+                        <span class="box-subtitle">Participação relativa por categoria de recurso</span>
+                    </div>
+                    <div class="box-content">
+                        <div class="chart-box">
+                            <canvas id="chartTaxSources"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gov-info-box">
+                    <h4>Fundamentação Normativa</h4>
+                    <p>A arrecadação municipal obedece ao estabelecido na Constituição Federal de 1988 (Arts. 156 a 159), na Lei Orgânica do Município de Amparo e no Código Tributário Municipal (Lei nº 1.890).</p>
+                </div>
+
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="sidebar-column">
+                <div class="sidebar-box">
+                    <div class="sidebar-title">Distribuição por Esfera</div>
+                    <div class="sidebar-body">
+                        <ul class="stat-list">
+                            <li class="stat-item"><span class="lbl">Repasses Estaduais:</span><span class="val">42,0%</span></li>
+                            <li class="stat-item"><span class="lbl">Repasses Federais:</span><span class="val">28,0%</span></li>
+                            <li class="stat-item"><span class="lbl">Tributos Próprios Municipais:</span><span class="val">30,0%</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="sidebar-box">
+                    <div class="sidebar-title">Nota Técnica sobre IPVA</div>
+                    <div class="sidebar-body" style="font-size: 12px; color: var(--text-sub); line-height: 1.5;">
+                        <p>O licenciamento de veículos no município de Amparo garante o retorno direto de 50% do valor do IPVA para o orçamento municipal, repassado quinzenalmente pela Secretaria da Fazenda do Estado de São Paulo.</p>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- Rodapé Oficial -->
+    <footer class="portal-footer">
+        <div class="container">
+            <div class="footer-flex">
+                <div class="footer-brand">
+                    <h3>Prefeitura Municipal da Estância Hidromineral de Amparo</h3>
+                    <p>Portal Oficial de Transparência Fiscal e Prestação de Contas</p>
+                </div>
+                <ul class="footer-nav">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="tributos.html">Receitas</a></li>
+                    <li><a href="retorno.html">Aplicação</a></li>
+                    <li><a href="calculadora.html">Simulação</a></li>
+                    <li><a href="transparencia.html">Legislação</a></li>
+                </ul>
+            </div>
+            <div style="text-align: center; font-size: 11px; color: #94a3b8;">
+                <p>&copy; 2026 Município de Amparo - Estado de São Paulo. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
